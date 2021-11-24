@@ -25,10 +25,10 @@ class BlogMapperTest {
         // 테스트 제목, 내용, 카테고리 번호만 바꿔서 돌리기
         for (int i = 1; i <= 50; i++) {
             Blog blog = new Blog();
-            blog.setBoardTitle("영화 테스트 제목 " + i);
-            blog.setBoardContent("영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용 " + i);
+            blog.setBoardTitle("일상 테스트 제목 " + i);
+            blog.setBoardContent("일상 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용 " + i);
             //카테고리 1: 영화
-            blog.setCategoryNo(1);
+            blog.setCategoryNo(3);
             blog.setBoardNo(i);
 
             blogMapper.insertArticle(blog);
@@ -72,7 +72,7 @@ class BlogMapperTest {
             System.out.println(article);
         }
         // size는 게시물의 개수
-        Assertions.assertTrue(articles.size() == 15);
+        Assertions.assertTrue(articles.size() == 10);
     }
 
     @Test
@@ -100,8 +100,8 @@ class BlogMapperTest {
             System.out.println(daily);
         }
         // size는 게시물의 개수
-        Assertions.assertTrue(movie.size() == 5);
-        Assertions.assertTrue(restaurant.size() == 5);
-        Assertions.assertTrue(daily.size() == 5);
+        Assertions.assertTrue(movie.size() > 5);
+        Assertions.assertTrue(restaurant.size() > 5);
+        Assertions.assertTrue(daily.size() > 5);
     }
 }

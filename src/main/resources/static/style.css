@@ -90,19 +90,13 @@
     padding: 205px 280px;
 }
 
-/* 캐러셀 CSS */
 
-
-
-.wrapper section.bg-text-area .container {
+/* .wrapper section.bg-text-area .container #img-box {
     position: relative;
-    width: 75%;
-    height: 300px;
+    width: 100%;
+    height: 30vw;
     margin: 0 auto;
-}
-
-.wrapper section.bg-text-area .container2 {
-}
+} */
 
 .wrapper section.bg-text-area .container .imgcell2 {
     position: absolute;
@@ -324,12 +318,12 @@ section.blog-post-area h4 span.author-name {
 }
 
 .wrapper footer.footer {
-    height: 130px;
+    height: 80px;
 }
 
 .wrapper footer .footer-bg {
     background: #000 none repeat scroll 0 0;
-    height: 130px;
+    height: 80px;
     overflow: hidden;
 }
 
@@ -338,7 +332,7 @@ section.blog-post-area h4 span.author-name {
 }
 
 .wrapper footer.footer .footer-menu ul {
-    line-height: 130px;
+    line-height: 80px;
     margin: 0;
     padding: 0;
 }
@@ -364,7 +358,7 @@ section.blog-post-area h4 span.author-name {
 
 .wrapper footer.footer .footer-icon p {
     float: right;
-    line-height: 130px;
+    line-height: 80px;
 }
 
 .wrapper footer.footer .footer-icon p i {
@@ -788,4 +782,3 @@ section.blog-post-area h4 span.author-name {
     font-size: 15px;
     font-weight: 500;
 }
-
