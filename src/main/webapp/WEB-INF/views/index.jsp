@@ -85,7 +85,7 @@
             </div>
         </header>
 
-        <!-- 메인 사진 -->
+        <!-- 메인 사진 캐러셀 부분 -->
         <section class="bg-text-area">
             <div class="container">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -128,7 +128,16 @@
             </div>
         </section>
 
+        <!-- 공지사항 -->
+        
+        <!-- 최신글 -->
 
+        <!-- 인기글 -->
+
+
+    
+
+        <!-- 하단 푸터 바 -->
         <%@ include file="include/footer.jsp" %>
 
     </div>

@@ -84,12 +84,12 @@
     color: #fff;
 }
 
-.wrapper section.bg-text-area .bg-text {
+/* 문제 없을시 삭제할 것. 템플릿 초기의 배경이미지 css이다. */
+/* .wrapper section.bg-text-area .bg-text {
     background-image: url(img/bg-iamges.jpg);
     background-size: 100% 100%;
     padding: 205px 280px;
-}
-
+} */
 
 /* .wrapper section.bg-text-area .container #img-box {
     position: relative;
@@ -107,24 +107,6 @@
     position: absolute;
     left: 1500px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .wrapper section.bg-text-area .bg-text h3 {
     color: #fff;
@@ -145,6 +127,7 @@
     margin: 32px 0 0;
     text-align: center;
 }
+
 
 section.blog-post-area {
     margin-top: 50px;
@@ -225,9 +208,20 @@ section.blog-post-area h4 span.author-name {
     font-weight: 500;
 }
 
+/*  최신글, 인기글 목록 css */
+.blog-post-area .main-post h2 span {
+    font-family: Geometria;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #061e37;
+
+    background: #448aff;
+}
+
 .blog-post-area .single-post h3 a {
     font-family: Geometria;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     text-decoration: none;
     color: #061e37;
@@ -272,6 +266,12 @@ section.blog-post-area h4 span.author-name {
     margin: 25px 0 15px;
 }
 
+.blog-post-area .main-post h2 {   
+    margin: 25px 0 15px;
+    display: block;
+}
+
+/* 페이지 숫자 */
 .blog-post-area .pegination {
     margin-top: 60px;
     margin-bottom: 60px;
