@@ -326,11 +326,12 @@
                                 
                                 <c:forEach var="article" items="${articles}">
                                     <tr>
-                                        <td>${article[0].boardNo}</td>
-                                        <td>제목2</td>
-                                        <td>작성시간2</td>
-                                        <td>조회수2</td>
-                                        <td>비고2</td>
+                                        <td>${article.boardNo}</td>
+                                        <td>${article.boardNo}</td>
+                                        <td>${article.boardNo}</td>
+                                        <td>${article.boardNo}</td>
+                                        <td>${article.boardNo}</td>
+                                        
                                     </tr>
                                 </c:forEach>
                             </table>
