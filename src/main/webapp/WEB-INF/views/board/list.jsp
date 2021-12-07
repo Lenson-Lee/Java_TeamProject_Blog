@@ -295,16 +295,17 @@
 
                         <!-- mvc 수업 테이블 복붙 -->
                         <div class="list-container">
-                            <div class="amount">
+                            <!-- <div class="amount">
                                 <a
                                     href="/board/list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
                                 <a
                                     href="/board/list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
                                 <a
                                     href="/board/list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
-                            </div>
+                            </div> -->
 
                             <table border="1" id="list-table" width="100%">
+                               
                                 <tr>
                                     <th>게시글번호</th>
                                     <!-- <th>작성자</th> -->
@@ -314,35 +315,22 @@
                                     <th>비고</th>
                                 </tr>
 
+                                <!-- 임시 게시글 목록 -->
+                                <tr>
+                                    <td>게시글1</td>
+                                    <td>제목1</td>
+                                    <td>작성시간1</td>
+                                    <td>조회수1</td>
+                                    <td>비고1</td>
+                                </tr>
+                                
                                 <c:forEach var="article" items="${articles}">
-                                    <tr class="selectArticle">
-                                        <td>${article.boardNo}</td>
-                                        <!-- <td>작성자는 한 명이니 삭제하도록</td> -->
-
-                                        <td>
-                                            <a
-                                                href="single?serialNo=${article[0].serialNo}&categoryNo=${article[0].categoryNo}">${article[0].boardTitle}</a>
-
-                                            <!-- <c:if test="${article.newFlag}">
-                                            <span class="badge rounded-pill bg-danger">new</span>
-                                        </c:if>
-            
-                                        <c:if test="${article.viewCnt >= 2}">
-                                            <span class="badge rounded-pill bg-info text-dark">hit</span>
-                                        </c:if> -->
-
-                                        </td>
-
-                                        <td>
-                                            <fmt:formatDate value="${article[0].boardDate}"
-                                                pattern="yyyy-MM-dd a hh:mm:ss" />
-                                        </td>
-                                        <td>
-                                            <a>${article[0].boardViewCnt}</a>
-                                        </td>
-                                        <td>
-                                            <a data-board-no="${article.boardNo}" class="del-btn" href="#">[삭제]</a>
-                                        </td>
+                                    <tr>
+                                        <td>${article[0].boardNo}</td>
+                                        <td>제목2</td>
+                                        <td>작성시간2</td>
+                                        <td>조회수2</td>
+                                        <td>비고2</td>
                                     </tr>
                                 </c:forEach>
                             </table>

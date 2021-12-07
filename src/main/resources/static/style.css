@@ -796,7 +796,7 @@ section.blog-post-area h4 span.author-name {
 
 /* list.jsp - main.css 복붙했다. */
 .blog-post-area-style .list-container #list-table td {
-    border: 1px solid #ccc;
+    border: 1px solid rgb(131, 131, 131);
 }
 
 /* .list-container h2 {
