@@ -191,6 +191,21 @@ public class BlogService {
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
 
+        return articles;
+    }
+
+
+    //    ################# 게시글 리스트(테이블) 조회 #################
+    public List<Blog> getSearchArticles() {
+        List<Blog> articles = blogMapper.getSearchArticles();
+
+        //게시글 제목 ...붙이기
+        //게시글 내용은 따로 나타나지 않아서 생략했다.
+        for (Blog article : articles) {
+            String title = article.getBoardTitle();
+            if (title.length() > 12)
+                article.setBoardTitle(title.substring(0, 12) + "...");
+        }
 
         return articles;
     }

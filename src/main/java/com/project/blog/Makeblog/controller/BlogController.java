@@ -43,7 +43,6 @@ public class BlogController {
         model.addAttribute("article", content);
         model.addAttribute("articles", viewCount);
 
-
         return "board/single";
     }
 

@@ -189,9 +189,15 @@ section.blog-post-area .big-text h4::before {
 
 section.blog-post-area .single-post {
     padding-right: 20px;
-    margin: 100px 0px 0px;
+    /* 마진은 .single-post .main-title에서 */
+    /* margin: 30px 0px 30px; */
 }
 
+section.blog-post-area .single-post .main-title {
+    display: inline-block;
+    margin: 100px 0px 0px;
+    padding-left: 15px;
+}
 section.blog-post-area h4 span {
     font-family: Geometria;
     font-weight: 400;
@@ -208,16 +214,16 @@ section.blog-post-area h4 span.author-name {
     font-weight: 500;
 }
 
-/*  최신글, 인기글 목록 css */
-.blog-post-area .main-post h2 span {
+ /* ++++++++++ 최신글, 인기글 목록 css ++++++++++
+기존의 클래스를 상속받아서 작업했음. */
+.blog-post-area .single-post h3 .main-title {
     font-family: Geometria;
     font-size: 20px;
     font-weight: 700;
     text-decoration: none;
     color: #061e37;
-
-    background: #448aff;
 }
+
 
 .blog-post-area .single-post h3 a {
     font-family: Geometria;
@@ -262,14 +268,12 @@ section.blog-post-area h4 span.author-name {
     width: 100%;
 }
 
+/* 
 .blog-post-area .single-post h3 {
     margin: 25px 0 15px;
-}
+} */
 
-.blog-post-area .main-post h2 {   
-    margin: 25px 0 15px;
-    display: block;
-}
+
 
 /* 페이지 숫자 */
 .blog-post-area .pegination {
@@ -781,4 +785,49 @@ section.blog-post-area h4 span.author-name {
     font-family: Geometria;
     font-size: 15px;
     font-weight: 500;
+}
+
+
+/* ############### 게시글 테이블 css ###############  */
+.blog-post-area-style .list-container #list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* list.jsp - main.css 복붙했다. */
+.blog-post-area-style .list-container #list-table td {
+    border: 1px solid #ccc;
+}
+
+/* .list-container h2 {
+    text-align: center;
+} */
+
+.blog-post-area-style .list-container .amount {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    position: relative;
+    right: 5%;
+}
+
+.blog-post-area-style .list-container .amount a {
+    display: block;
+    color: #fff;
+    background: #f00;
+    width: 50px;
+    height: 20px;
+    border-radius: 5px;
+    margin-right: 5px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+
+}
+
+/* list hover */
+.selectArticle:hover {
+    background: #ccc;
+    
 }

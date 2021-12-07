@@ -57,14 +57,14 @@
             <div class="container">
                 <div class="row">
                     <div class="blog-post-area-style">
-                        <div class="col-md-12">
+                        <!-- <div class="col-md-12">
                             <div class="single-post-big">
-                                <div class="big-image">
+                                <div class="big-image"> -->
 
 
-                                    <!-- #################################### 대표 사진 조건문 코드  ####################################### -->
+                        <!-- #################################### 대표 사진 조건문 코드  ####################################### -->
 
-                                    <c:set var="menu" value="${flag}" />
+                        <!-- <c:set var="menu" value="${flag}" />
                                     <c:choose>
                                         <c:when test="${menu == 'movie'}">
                                             <img src="../../img/movie-bg-img.jpg" alt="이미지" id="big-img" />
@@ -80,11 +80,11 @@
 
                                     </c:choose>
 
-                                </div>
+                                </div> -->
 
-                                <!-- #################################### 대표글 코드  ####################################### -->
+                        <!-- #################################### 대표글 코드  ####################################### -->
 
-                                <div class="big-text">
+                        <!-- <div class="big-text">
                                     <c:choose>
 
                                         <c:when test="${menu == 'movie'}">
@@ -120,21 +120,26 @@
                                             <span class="author-name">홍길동</span></span>
                                     </h4>
                                 </div>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
 
 
                         <!-- #################################### 최신글 코드  ####################################### -->
-                        
-                        <h2><span class="main-post">최신글</span></h2>
+                        <div class="single-post">
+                            <h3>
+                                <span class="main-title">최신글</span>
+                            </h3>
+                        </div>
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="img/post-image5.jpg" alt="">
+                                <img src="../../img/post-image3.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${article[0].serialNo}&categoryNo=${article[0].categoryNo}">${article[0].boardTitle}</a>
                                 </h3>
-                                <p>${article[0].boardContent}</p>
+
+                                <!-- 게시글 내용 -->
+                                <!-- <p>${article[0].boardContent}</p> -->
                                 <h4>
                                     <span>
                                         <fmt:formatDate value="${article[0].boardDate}"
@@ -147,11 +152,12 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="img/post-image3.jpg" alt="">
+                                <img src="../../img/post-image3.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${article[1].serialNo}&categoryNo=${article[1].categoryNo}">${article[1].boardTitle}</a>
                                 </h3>
-                                <p>${article[1].boardContent}</p>
+                                <!-- 게시글 내용 -->
+                                <!-- <p>${article[1].boardContent}</p> -->
                                 <h4>
                                     <span>
                                         <fmt:formatDate value="${article[1].boardDate}"
@@ -163,11 +169,12 @@
                         </div>
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="img/post-image4.jpg" alt="">
+                                <img src="../../img/post-image4.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${article[2].serialNo}&categoryNo=${article[2].categoryNo}">${article[2].boardTitle}</a>
                                 </h3>
-                                <p>${article[2].boardContent}</p>
+                                <!-- 게시글 내용 -->
+                                <!-- <p>${article[2].boardContent}</p> -->
                                 <h4>
                                     <span>
                                         <fmt:formatDate value="${article[2].boardDate}"
@@ -179,11 +186,12 @@
                         </div>
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="img/post-image5.jpg" alt="">
+                                <img src="../../img/post-image5.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${article[3].serialNo}&categoryNo=${article[3].categoryNo}">${article[3].boardTitle}</a>
                                 </h3>
-                                <p>${article[3].boardContent}</p>
+                                <!-- 게시글 내용 -->
+                                <!-- <p>${article[3].boardContent}</p> -->
                                 <h4>
                                     <span>
                                         <fmt:formatDate value="${article[3].boardDate}"
@@ -197,16 +205,21 @@
 
 
                         <!-- #################################### 인기글 코드  ####################################### -->
-                        
-                        <h2><span class="main-post">인기글</span></h2>
+
+                        <div class="single-post">
+                            <h3>
+                                <span class="main-title">인기글</span>
+                            </h3>
+                        </div>
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="img/post-image2.jpg" alt="">
+                                <img src="../../img/post-image2.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${bestArticles[0].serialNo}&categoryNo=${bestArticles[0].categoryNo}">${bestArticles[0].boardTitle}</a>
                                 </h3>
-                                <p>${bestArticles[0].boardContent}</p>
+                                <!-- 게시글 내용 -->
+                                <!-- <p>${bestArticles[0].boardContent}</p> -->
                                 <h4>
                                     <span>
                                         <fmt:formatDate value="${bestArticles[0].boardDate}"
@@ -219,11 +232,12 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="img/post-image2.jpg" alt="">
+                                <img src="../../img/post-image2.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${bestArticles[1].serialNo}&categoryNo=${bestArticles[1].categoryNo}">${bestArticles[1].boardTitle}</a>
                                 </h3>
-                                <p>${bestArticles[1].boardContent}</p>
+                                <!-- 게시글 내용 -->
+                                <!-- <p>${bestArticles[1].boardContent}</p> -->
                                 <h4>
                                     <span>
                                         <fmt:formatDate value="${bestArticles[1].boardDate}"
@@ -236,11 +250,12 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="img/post-image2.jpg" alt="">
+                                <img src="../../img/post-image2.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${bestArticles[2].serialNo}&categoryNo=${bestArticles[2].categoryNo}">${bestArticles[2].boardTitle}</a>
                                 </h3>
-                                <p>${bestArticles[2].boardContent}</p>
+                                <!-- 게시글 내용 -->
+                                <!-- <p>${bestArticles[2].boardContent}</p> -->
                                 <h4>
                                     <span>
                                         <fmt:formatDate value="${bestArticles[2].boardDate}"
@@ -253,11 +268,12 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="img/post-image2.jpg" alt="">
+                                <img src="../../img/post-image2.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${bestArticles[3].serialNo}&categoryNo=${bestArticles[3].categoryNo}">${bestArticles[3].boardTitle}</a>
                                 </h3>
-                                <p>${bestArticles[3].boardContent}</p>
+                                <!-- 게시글 내용 -->
+                                <!-- <p>${bestArticles[3].boardContent}</p> -->
                                 <h4>
                                     <span>
                                         <fmt:formatDate value="${bestArticles[3].boardDate}"
@@ -269,6 +285,68 @@
                         </div>
 
 
+                        <!-- ############## 카테고리별 전체 게시글(페이징 들어가는 부분) ############## -->
+
+                        <div class="single-post">
+                            <h3>
+                                <span class="main-title">전체글</span>
+                            </h3>
+                        </div>
+
+                        <!-- mvc 수업 테이블 복붙 -->
+                        <div class="list-container">
+                            <div class="amount">
+                                <a
+                                    href="/board/list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
+                                <a
+                                    href="/board/list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
+                                <a
+                                    href="/board/list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
+                            </div>
+
+                            <table border="1" id="list-table" width="100%">
+                                <tr>
+                                    <th>게시글번호</th>
+                                    <!-- <th>작성자</th> -->
+                                    <th>제목</th>
+                                    <th>작성시간</th>
+                                    <th>조회수</th>
+                                    <th>비고</th>
+                                </tr>
+
+                                <c:forEach var="article" items="${articles}">
+                                    <tr class="selectArticle">
+                                        <td>${article.boardNo}</td>
+                                        <!-- <td>작성자는 한 명이니 삭제하도록</td> -->
+
+                                        <td>
+                                            <a
+                                                href="single?serialNo=${article[0].serialNo}&categoryNo=${article[0].categoryNo}">${article[0].boardTitle}</a>
+
+                                            <!-- <c:if test="${article.newFlag}">
+                                            <span class="badge rounded-pill bg-danger">new</span>
+                                        </c:if>
+            
+                                        <c:if test="${article.viewCnt >= 2}">
+                                            <span class="badge rounded-pill bg-info text-dark">hit</span>
+                                        </c:if> -->
+
+                                        </td>
+
+                                        <td>
+                                            <fmt:formatDate value="${article[0].boardDate}"
+                                                pattern="yyyy-MM-dd a hh:mm:ss" />
+                                        </td>
+                                        <td>
+                                            <a>${article[0].boardViewCnt}</a>
+                                        </td>
+                                        <td>
+                                            <a data-board-no="${article.boardNo}" class="del-btn" href="#">[삭제]</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
