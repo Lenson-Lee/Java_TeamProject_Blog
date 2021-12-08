@@ -222,8 +222,7 @@ public class BlogService {
     }
 
     // 4. 게시물 삭제
-    public boolean remove(int serialNo) {
-        return blogMapper.deleteArticle(serialNo);
+    public boolean remove(int serialNo) { return blogMapper.deleteArticle(serialNo);
     }
 
     // 5. 게시물 수정

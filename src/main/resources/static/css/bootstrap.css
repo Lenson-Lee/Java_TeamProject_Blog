@@ -187,6 +187,8 @@ td,
 th {
   padding: 0;
 }
+
+
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
   *,
@@ -1387,7 +1389,7 @@ a.bg-success:focus {
   background-color: #c1e2b3;
 }
 .bg-info {
-  background-color: #d9edf7;
+  background-color: #70cfff;
 }
 a.bg-info:hover,
 a.bg-info:focus {
@@ -1406,6 +1408,13 @@ a.bg-warning:focus {
 a.bg-danger:hover,
 a.bg-danger:focus {
   background-color: #e4b9b9;
+}
+.bg-secondary {
+  background: rgb(114, 114, 114);
+}
+a.bg-secondary:hover,
+a.bg-secondary:focus {
+  background: rgb(161, 161, 161);
 }
 .page-header {
   padding-bottom: 9px;
@@ -3115,7 +3124,7 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-default .badge {
   color: #fff;
-  background-color: #333;
+  /* background-color: #333; */
 }
 .btn-primary {
   color: #fff;
@@ -4924,7 +4933,7 @@ a.label:focus {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  background-color: #777;
+  /* background-color: #777; */
   border-radius: 10px;
 }
 .badge:empty {
@@ -6763,48 +6772,3 @@ button.close {
 }
 /*# sourceMappingURL=bootstrap.css.map */
 
-
-
-/* ############### 게시글 테이블 css ###############  */
-.blog-post-area-style .list-container .list-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-/* list.jsp - main.css 복붙했다. */
-.blog-post-area-style .list-container .list-table td {
-  border: 1px solid #ccc;
-}
-
-/* .list-container h2 {
-  text-align: center;
-} */
-
-.blog-post-area-style .list-container .amount {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-  position: relative;
-  right: 5%;
-}
-
-.blog-post-area-style .list-container .amount a {
-  display: block;
-  color: #fff;
-  background: #f00;
-  width: 50px;
-  height: 20px;
-  border-radius: 5px;
-  margin-right: 5px;
-  text-align: center;
-  font-weight: 700;
-  text-decoration: none;
-
-}
-
-/* list hover */
-.selectArticle:hover {
-  background: #ccc;
-  
-}

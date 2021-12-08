@@ -813,8 +813,9 @@ section.blog-post-area h4 span.author-name {
 
 }
 
+/* 게시글 hover 컬러 */
 .blog-post-area-style .list-container #list-table .table-hover:hover{
-    background: rgb(219, 219, 219);
+    background: rgb(236, 236, 236);
 }
 
 .blog-post-area-style .list-container .amount {
@@ -838,10 +839,4 @@ section.blog-post-area h4 span.author-name {
     font-weight: 700;
     text-decoration: none;
 
-}
-
-/* list hover */
-.selectArticle:hover {
-    background: #ccc;
-    
 }

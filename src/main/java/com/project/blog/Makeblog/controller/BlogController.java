@@ -52,6 +52,7 @@ public class BlogController {
         return "board/write";
     }
 
+
     // 3. 게시물 등록 요청
     // return값은 임의로 movie-list로 설정 해뒀습니다.
     // 기본값 : redirect:/board/list
@@ -59,6 +60,11 @@ public class BlogController {
     public String write(Blog blog, RedirectAttributes ra) {
         log.info("/board/write POST 요청! - " + blog);
         blogService.insert(blog);
+
+
+
+//        이런건 어떻게 생각했니,,
+//        int boardNo = blogService.upBoardNo(serialNo);
 
         return "redirect:/board/movie-list";
     }

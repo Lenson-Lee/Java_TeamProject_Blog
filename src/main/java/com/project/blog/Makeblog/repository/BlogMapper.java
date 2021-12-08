@@ -46,6 +46,9 @@ public interface BlogMapper {
     //6. 조회수 상승
     int upViewCount(int serialNo);
 
+    //6-2. ######################### 게시글 등록시 보드넘버 상승
+    int upBoardNo(int serialNo);
+
     //7. 조회수 5이상인 영화 카테고리에 게시물 등록
     List<Blog> getMovieBestArticle();
 

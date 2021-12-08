@@ -339,7 +339,7 @@
                                         </td>
                                         <td>${a.boardViewCnt}</td>
                                         <td>
-                                            <a data-board-no=${a.serialNo} href="#">삭제</a>
+                                            <a data-serial-no=${a.serialNo} class="badge rounded-pill bg-secondary del-btn" href="#">삭제</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -360,11 +360,15 @@
 -->
 
                 <div class="nav-links">
-                    <span class="page-numbers current">1</span>
+                    <!-- 1번만 span인 이유가 있나요? a로 바꾸었는데 문제있으면 확인해봐야할거같아요 -->
+                    <a class="page-numbers current">1</a>
                     <a class="page-numbers" href="#">2</a>
                     <a class="page-numbers" href="#">3</a>
                     <a class="page-numbers" href="#">4</a>
                     <a class="page-numbers" href="#">5</a>
+                    <a class="page-numbers" href="#">6</a>
+                    <a class="page-numbers" href="#">7</a>
+                    <a class="page-numbers" href="#">8</a>
                     <a class="page-numbers" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </div>
             </div>
@@ -377,6 +381,32 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/active.js"></script>
+    <script>
+        //삭제 버튼 클릭 이벤트
+        //삭제 버튼에 바로 달면 첫째줄만 된다. 수많은 삭제여서 버블링, 부모 태그에 써야함
+        const delBtn = document.querySelector('del-btn');
+        const table = document.querySelector('table');
+
+        table.addEventListener('click', e => {
+
+            if (!e.target.matches('a.del-btn')) {
+                console.log('a태그의 del-btn이 아닙니다');
+                return;
+            }
+
+            e.preventDefault(); //a 태그의 링크가 클릭이벤트보다 우선시되어서 막아야 컨펌기능이 실행된다.
+            //console.log('삭제버튼 클릭됨!');
+
+            //article.boardNo 변수는 forEach 함수에서 쓰는 태그라 함수가 끝나면서 사라져 사용이 불가능. => dataset 사용
+            const serialNo = e.target.dataset.serialNo;
+
+            console.log(serialNo);
+
+            if (confirm('정말로 삭제하겠습니까?')) {
+                location.href = '/board/delete?serialNo=' + serialNo;
+            }
+        });
+    </script>
 </body>
 
 </html>
