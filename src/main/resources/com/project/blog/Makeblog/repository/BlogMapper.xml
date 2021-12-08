@@ -64,12 +64,16 @@
     <!--  임시로 영화만 리스트 만들기 해보겠음  -->
     <select id="getSearchArticles" resultMap="boardMap">
         <!-- CDATA로 감싸는 이유는 마크업 내부에서 특수문자를 문자로 인식시키기 위함.
-            이 안에 태그는 다 인식 안된다. 문자로 인식 되는 특징 있음. -->
+            이 안에 태그는 다 인식 안된다. 문자로 인식 되는 특징 있음.
+             /*+INDEX_DESC는 오라클힌트를 사용하기 위함. 오라클 힌트를 사용하지 않으면 삼중쿼리가 되기 때문
+             PK설정을 CONSTRAINT(?)로 하면 인덱스명 설정이 가능하지만 그냥 pk만 입력하면
+             임의로 지정된 인덱스명을 사용(추후에 변경 가능) 그래서 우리는 sys_c007043 사용
+             테이블명 (공백) 인덱스명 -->
         <![CDATA[
             SELECT
             serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
             FROM
-            (SELECT  /*+INDEX_DESC(board)*/
+            (SELECT  /*+INDEX_DESC(board sys_c007043)*/
             rownum rn, serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
             FROM board
             WHERE rownum <= 10)

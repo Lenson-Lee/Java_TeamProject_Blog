@@ -293,7 +293,6 @@
                             </h3>
                         </div>
 
-                        <!-- mvc 수업 테이블 복붙 -->
                         <div class="list-container">
                             <!-- <div class="amount">
                                 <a
@@ -308,108 +307,31 @@
 
                                 <tr>
                                     <th>게시글번호</th>
-                                    <!-- <th>작성자</th> -->
                                     <th>제목</th>
                                     <th>작성시간</th>
                                     <th>조회수</th>
                                     <th>비고</th>
                                 </tr>
 
-                                <!-- 데이터 연동 목록 -->
-                                <!-- forEach는 작동이 되지 않음 -->
-                                <c:forEach var="article" items="${articles}">
+                                <!-- 컨트롤러의 article 리스트(?)를 변수 a에 대입 -->
+                                <!-- 오류원인: items가 ${articles}가 아닌 ${article}로 되어야
+                                    하고, var가 article 이면 변수명이 겹쳐서 500 오류가 된다. -->
+                                <c:forEach var="a" items="${article}">
                                     <tr class="table-hover">
-                                        <td>${article[0].boardNo}</td>
+                                        <td>${a.boardNo}</td>
                                         <td>
-                                            <a href="#">${article[0].boardTitle}</a>
+                                            <a href="/board/single?serialNo=${a.serialNo}&categoryNo=${a.categoryNo}">${a.boardTitle}</a>
                                         </td>
-                                        <td>${article[0].boardDate}</td>
-                                        <td>${article[0].boardViewCnt}</td>
                                         <td>
-                                            <a href="#">삭제</a>
+                                            <fmt:formatDate value="${a.boardDate}" pattern="yyyy-MM-dd a hh:mm:ss"/>
+                                        </td>
+                                        <td>${a.boardViewCnt}</td>
+                                        <td>
+                                            <a data-board-no=${a.serialNo} href="#">삭제</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
-
-                                <tr class="table-hover">
-                                    <td>${article[1].boardNo}</td>
-                                    <td>
-                                        <a href="#">${article[1].boardTitle}</a>
-                                    </td>
-                                    <td>${article[1].boardDate}</td>
-                                    <td>${article[1].boardViewCnt}</td>
-                                    <td>
-                                        <a href="#">삭제</a>
-                                    </td>
-                                </tr>
-                                <tr class="table-hover">
-                                    <td>${article[2].boardNo}</td>
-                                    <td>
-                                        <a href="#">${article[2].boardTitle}</a>
-                                    </td>
-                                    <td>${article[2].boardDate}</td>
-                                    <td>${article[2].boardViewCnt}</td>
-                                    <td>
-                                        <a href="#">삭제</a>
-                                    </td>
-                                </tr>
-                                <tr class="table-hover">
-                                    <td>${article[3].boardNo}</td>
-                                    <td>
-                                        <a href="#">${article[3].boardTitle}</a>
-                                    </td>
-                                    <td>${article[3].boardDate}</td>
-                                    <td>${article[3].boardViewCnt}</td>
-                                    <td>
-                                        <a href="#">삭제</a>
-                                    </td>
-                                </tr>
-                                <tr class="table-hover">
-                                    <td>${article[4].boardNo}</td>
-                                    <td>
-                                        <a href="#">${article[4].boardTitle}</a>
-                                    </td>
-                                    <td>${article[4].boardDate}</td>
-                                    <td>${article[4].boardViewCnt}</td>
-                                    <td>
-                                        <a href="#">삭제</a>
-                                    </td>
-                                </tr>
-                                <tr class="table-hover">
-                                    <td>${article[5].boardNo}</td>
-                                    <td>
-                                        <a href="#">${article[5].boardTitle}</a>
-                                    </td>
-                                    <td>${article[5].boardDate}</td>
-                                    <td>${article[5].boardViewCnt}</td>
-                                    <td>
-                                        <a href="#">삭제</a>
-                                    </td>
-                                </tr>
-                                <tr class="table-hover">
-                                    <td>${article[6].boardNo}</td>
-                                    <td>
-                                        <a href="#">${article[6].boardTitle}</a>
-                                    </td>
-                                    <td>${article[6].boardDate}</td>
-                                    <td>${article[6].boardViewCnt}</td>
-                                    <td>
-                                        <a href="#">삭제</a>
-                                    </td>
-                                </tr>
-                                <tr class="table-hover">
-                                    <td>${article[7].boardNo}</td>
-                                    <td>
-                                        <a href="#">${article[7].boardTitle}</a>
-                                    </td>
-                                    <td>${article[7].boardDate}</td>
-                                    <td>${article[7].boardViewCnt}</td>
-                                    <td>
-                                        <a href="#">삭제</a>
-                                    </td>
-                                </tr>
-
-                            </table>
+                            </table> 
                         </div>
                     </div>
                 </div>

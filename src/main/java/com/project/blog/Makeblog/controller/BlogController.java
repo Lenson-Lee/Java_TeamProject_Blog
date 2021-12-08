@@ -111,6 +111,8 @@ public class BlogController {
         log.info("/board/movie-list GET 요청 발생");
         List<Blog> articles = blogService.getMovieArticles();
         log.info(articles);
+
+        //List<Blog> articles를 article로 이름짓는다 ->
         model.addAttribute("article", articles);
 
         List<Blog> bestArticles = blogService.getMovieBestArticle();
