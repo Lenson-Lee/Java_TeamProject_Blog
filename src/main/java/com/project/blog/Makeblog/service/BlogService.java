@@ -108,7 +108,6 @@ public class BlogService {
                 article.setNewFlag(true);
             }
         }*/
-
         return articles;
     }
 
@@ -130,7 +129,7 @@ public class BlogService {
         }
 
 
-        /*//3분 이내 신규글 new마크 붙이기
+        //3분 이내 신규글 new마크 붙이기
         for (Blog article : articles) {
             //각 게시물들의 등록시간 읽어오기(밀리초)
             long regTime = article.getBoardDate().getTime();
@@ -138,10 +137,10 @@ public class BlogService {
             //현재시간 읽어오기(밀리초)
             long now = System.currentTimeMillis();
 
-            if (now - regTime < 60 * 3 * 1000) {
+            if (now - regTime < 60 * 10 * 1000) {
                 article.setNewFlag(true);
             }
-        }*/
+        }
 
         return articles;
     }

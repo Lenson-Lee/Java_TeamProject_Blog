@@ -306,8 +306,9 @@
                             <table border="1" id="list-table" class="table table-sm" width="100%">
 
                                 <tr>
+                                    <th></th>
                                     <th>게시글번호</th>
-                                    <th>제목</th>
+                                    <th width="50%">제목</th>
                                     <th>작성시간</th>
                                     <th>조회수</th>
                                     <th>비고</th>
@@ -319,11 +320,22 @@
                                 <c:forEach var="a" items="${article}">
                                     <tr class="table-hover">
                                         <td>${a.boardNo}</td>
+                                        <td>${a.serialNo}</td>
                                         <td>
-                                            <a href="/board/single?serialNo=${a.serialNo}&categoryNo=${a.categoryNo}">${a.boardTitle}</a>
+                                            <a
+                                                href="/board/single?serialNo=${a.serialNo}&categoryNo=${a.categoryNo}">${a.boardTitle}</a>
+
+                                            <!-- 신규, 인기 뱃지 -->
+                                            <c:if test="${a.newFlag}">
+                                                <span class="badge rounded-pill bg-primary">new</span>
+                                            </c:if>
+
+                                            <c:if test="${a.boardViewCnt >= 20}">
+                                                <span class="badge bg-info text-dark">hit</span>
+                                            </c:if>
                                         </td>
                                         <td>
-                                            <fmt:formatDate value="${a.boardDate}" pattern="yyyy-MM-dd a hh:mm:ss"/>
+                                            <fmt:formatDate value="${a.boardDate}" pattern="yyyy-MM-dd a hh:mm:ss" />
                                         </td>
                                         <td>${a.boardViewCnt}</td>
                                         <td>
@@ -331,7 +343,7 @@
                                         </td>
                                     </tr>
                                 </c:forEach>
-                            </table> 
+                            </table>
                         </div>
                     </div>
                 </div>
