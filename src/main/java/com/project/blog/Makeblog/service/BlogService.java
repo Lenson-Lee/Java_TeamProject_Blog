@@ -95,19 +95,6 @@ public class BlogService {
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
 
-
-        /*//3분 이내 신규글 new마크 붙이기
-        for (Blog article : articles) {
-            //각 게시물들의 등록시간 읽어오기(밀리초)
-            long regTime = article.getBoardDate().getTime();
-
-            //현재시간 읽어오기(밀리초)
-            long now = System.currentTimeMillis();
-
-            if (now - regTime < 60 * 3 * 1000) {
-                article.setNewFlag(true);
-            }
-        }*/
         return articles;
     }
 
@@ -206,6 +193,20 @@ public class BlogService {
                 article.setBoardTitle(title.substring(0, 12) + "...");
         }
 
+        for (Blog blog : articles) {
+
+            //각 게시물들의 등록시간 읽어오기(밀리초)
+            long regTime = blog.getBoardDate().getTime();
+
+            //현재시간 읽어오기(밀리초)
+            long now = System.currentTimeMillis();
+
+            if (now - regTime < 60 * 3 * 1000) {
+                blog.setNewFlag(true);
+
+            }
+        }
+
         return articles;
     }
 
@@ -222,7 +223,8 @@ public class BlogService {
     }
 
     // 4. 게시물 삭제
-    public boolean remove(int serialNo) { return blogMapper.deleteArticle(serialNo);
+    public boolean remove(int serialNo) {
+        return blogMapper.deleteArticle(serialNo);
     }
 
     // 5. 게시물 수정

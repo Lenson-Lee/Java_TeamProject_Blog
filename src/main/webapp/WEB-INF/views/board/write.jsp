@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -30,7 +29,7 @@
 
 <body>
     <div class="wrapper">
-        
+
         <%@ include file="../include/static-category.jsp" %>
 
         <section class="write">
@@ -40,21 +39,26 @@
             <div class="inputmenu">
 
                 <form action="/board/write" method="post">
-                     카테고리: <input type="radio" name="categoryNo" value="1" checked="checked">영화
+                    카테고리: <input type="radio" name="categoryNo" value="1" checked="checked">영화
                     <input type="radio" name="categoryNo" value="2"> 맛집
                     <input type="radio" name="categoryNo" value="3"> 일상 <br>
 
                     <input id="title" type="text" class="input" name="boardTitle" placeholder="제목을 입력하세요."><br>
                     <br>
-                    <textarea id="textArea" rows="60" class="input" cols="40"  name="boardContent" placeholder="내용을 입력하세요."></textarea><br>
+                    <textarea id="textArea" rows="60" class="input" cols="40" name="boardContent"
+                        placeholder="내용을 입력하세요."></textarea><br>
 
+                        <% String radioValue = request.getParameter("categoryNo"); %>
+                        console.log(radioValue);
 
                     <button type="submit">등록</button>
+                    
+
                 </form>
 
             </div>
 
-                <!-- herf는 카테고리별로 이동하게 만들어야함! -->
+            <!-- herf는 카테고리별로 이동하게 만들어야함! -->
             <a id="boardlist" href="movie-list" style="text-decoration: none;">글 목록보기</a>
 
         </section>

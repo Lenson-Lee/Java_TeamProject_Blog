@@ -57,26 +57,49 @@ public class BlogController {
     // return값은 임의로 movie-list로 설정 해뒀습니다.
     // 기본값 : redirect:/board/list
     @PostMapping("/write")
-    public String write(Blog blog, RedirectAttributes ra) {
+    public String write(Blog blog, RedirectAttributes ra, int categoryNo) {
         log.info("/board/write POST 요청! - " + blog);
         blogService.insert(blog);
 
-
-
-//        이런건 어떻게 생각했니,,
-//        int boardNo = blogService.upBoardNo(serialNo);
-
-        return "redirect:/board/movie-list";
+        if (categoryNo == 1) {
+            log.info("/board/movie-list 로 이동!");
+            return "redirect:/board/movie-list";
+        } else if (categoryNo == 2) {
+            log.info("/board/restaurant-list 로 이동!");
+            return "redirect:/board/restaurant-list";
+        } else {
+            log.info("/board/daily-list 로 이동!");
+            return "redirect:/board/daily-list";
+        }
     }
+//    게시물 등록 요청 원본코드
+//    @PostMapping("/write")
+//    public String write(Blog blog, RedirectAttributes ra) {
+//        log.info("/board/write POST 요청! - " + blog);
+//        blogService.insert(blog);
+//
+//
+//        return "redirect:/board/movie-list";
+//    }
 
     // 4. 게시물 삭제 요청
     // return값은 임의로 movie-list로 설정 해뒀습니다.
     // 기본값 : redirect:/board/list
     @GetMapping("/delete")
-    public String delete(int serialNo) {
+    public String delete(int serialNo, int categoryNo) {
         log.info("/board/delete GET ! - " + serialNo);
         blogService.remove(serialNo);
-        return "redirect:/board/movie-list";
+
+        if (categoryNo == 1) {
+            log.info("/board/movie-list 로 이동!");
+            return "redirect:/board/movie-list";
+        } else if (categoryNo == 2) {
+            log.info("/board/restaurant-list 로 이동!");
+            return "redirect:/board/restaurant-list";
+        } else {
+            log.info("/board/daily-list 로 이동!");
+            return "redirect:/board/daily-list";
+        }
     }
 
     // 게시물 수정페이지로 이동
@@ -98,17 +121,6 @@ public class BlogController {
     }
 
 
-
-
-
-/*    // 6. 조회수 상승 요청
-    @GetMapping("/single")
-    public String upViewCnt(int serialNo, Model model) {
-        model.addAttribute("articles", blogService.upViewCount(serialNo));
-        return "board/single";
-    }*/
-
-
     /////////////////////////// 카테고리 /////////////////////////////////////////
 
     // 카테고리(영화)로 이동
@@ -116,15 +128,14 @@ public class BlogController {
     public String movieList(Model model, Blog blog) {
         log.info("/board/movie-list GET 요청 발생");
         List<Blog> articles = blogService.getMovieArticles();
-        log.info(articles);
 
         //List<Blog> articles를 article로 이름짓는다 ->
+        // 앞으로 사용할 모델의 명은 "article" 이다.
         model.addAttribute("article", articles);
 
         List<Blog> bestArticles = blogService.getMovieBestArticle();
         model.addAttribute("bestArticles", bestArticles);
         log.info(blog.getSerialNo());
-
 
         model.addAttribute("flag", "movie");
 
@@ -159,6 +170,7 @@ public class BlogController {
         List<Blog> bestArticles = blogService.getDailyBestArticle();
         model.addAttribute("bestArticles", bestArticles);
 
+        // JSP에 flag(카테고리 전달)을 위한 model
         model.addAttribute("flag", "day");
 
         return "board/list";

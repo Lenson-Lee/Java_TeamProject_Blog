@@ -118,9 +118,9 @@
 
     <insert id="insertArticle">
         INSERT INTO board
-        (serial_no, board_no, board_title, board_content, category_no)
+        (serial_no, board_no, board_title, board_content, category_no, address)
         VALUES
-        (seq_board.nextval, #{boardNo} ,#{boardTitle}, #{boardContent}, #{categoryNo})
+        (seq_board.nextval, #{boardNo}, #{boardTitle}, #{boardContent}, #{categoryNo}, address)
     </insert>
 
     <!--   #############################  board_no 게시글 등록시 1씩 상승해야한다.   -->

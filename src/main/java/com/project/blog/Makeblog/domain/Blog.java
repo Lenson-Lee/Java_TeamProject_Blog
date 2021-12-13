@@ -16,6 +16,7 @@ public class Blog {
     private int boardViewCnt; // 글 조회수
     private Date boardDate; //  글 작성 날짜
     private Integer categoryNo; // 카테고리 번호
+    private String address;
 
     private boolean newFlag; //신규게시물 여부
 

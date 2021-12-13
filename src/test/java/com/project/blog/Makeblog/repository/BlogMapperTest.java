@@ -23,12 +23,12 @@ class BlogMapperTest {
     @DisplayName("10개의 게시물을 등록해야 한다.")
     void bulkInsert() {
         // 테스트 제목, 내용, 카테고리 번호만 바꿔서 돌리기
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 3; i++) {
             Blog blog = new Blog();
             blog.setBoardTitle("일상 테스트 제목 " + i);
             blog.setBoardContent("일상 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용영화 테스트 내용 " + i);
             //카테고리 1: 영화
-            blog.setCategoryNo(3);
+            blog.setCategoryNo(1);
             blog.setBoardNo(i);
 
             blogMapper.insertArticle(blog);

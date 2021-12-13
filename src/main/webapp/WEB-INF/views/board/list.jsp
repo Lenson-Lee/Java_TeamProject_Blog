@@ -306,8 +306,9 @@
                             <table border="1" id="list-table" class="table table-sm" width="100%">
 
                                 <tr>
-                                    <th></th>
-                                    <th>게시글번호</th>
+                                    <th>boardNo</th>
+                                    <th>seiralNo</th>
+                                    <th>신규글 여부</th>
                                     <th width="50%">제목</th>
                                     <th>작성시간</th>
                                     <th>조회수</th>
@@ -321,25 +322,28 @@
                                     <tr class="table-hover">
                                         <td>${a.boardNo}</td>
                                         <td>${a.serialNo}</td>
+                                        <td>${a.newFlag}</td>
                                         <td>
                                             <a
                                                 href="/board/single?serialNo=${a.serialNo}&categoryNo=${a.categoryNo}">${a.boardTitle}</a>
 
                                             <!-- 신규, 인기 뱃지 -->
-                                            <c:if test="${a.newFlag}">
-                                                <span class="badge rounded-pill bg-primary">new</span>
-                                            </c:if>
-
-                                            <c:if test="${a.boardViewCnt >= 20}">
-                                                <span class="badge bg-info text-dark">hit</span>
-                                            </c:if>
+                                            <c:choose>
+                                                <c:when test="${a.newFlag}">
+                                                    <span class="badge rounded-pill bg-primary">new</span>
+                                                </c:when>
+                                                <c:when test="${a.boardViewCnt >= 20}">
+                                                    <span class="badge bg-info text-dark">hit</span>
+                                                </c:when>
+                                            </c:choose>
                                         </td>
                                         <td>
                                             <fmt:formatDate value="${a.boardDate}" pattern="yyyy-MM-dd a hh:mm:ss" />
                                         </td>
                                         <td>${a.boardViewCnt}</td>
                                         <td>
-                                            <a data-serial-no=${a.serialNo} class="badge rounded-pill bg-secondary del-btn" href="#">삭제</a>
+                                            <a data-serial-no=${a.serialNo}
+                                                class="badge rounded-pill bg-secondary del-btn" href="#">삭제</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
