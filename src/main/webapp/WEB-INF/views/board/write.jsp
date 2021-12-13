@@ -48,8 +48,7 @@
                     <textarea id="textArea" rows="60" class="input" cols="40" name="boardContent"
                         placeholder="내용을 입력하세요."></textarea><br>
 
-                        <% String radioValue = request.getParameter("categoryNo"); %>
-                        console.log(radioValue);
+                        
 
                     <button type="submit">등록</button>
                     
