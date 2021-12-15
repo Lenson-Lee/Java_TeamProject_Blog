@@ -1,5 +1,6 @@
 package com.project.blog.Makeblog.service;
 
+import com.project.blog.Makeblog.common.paging.Page;
 import com.project.blog.Makeblog.domain.Blog;
 import com.project.blog.Makeblog.repository.BlogMapper;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ public class BlogService {
 
     private final BlogMapper blogMapper;
 
-    //7. 영화 카테고리 인기글 목록 가져오기
+    //7. ##################### 인기글 목록 가져오기 #####################
     public List<Blog> getMovieBestArticle() {
         List<Blog> best = blogMapper.getMovieBestArticle();
 
@@ -35,7 +36,6 @@ public class BlogService {
         return best;
     }
 
-    //7. 맛집 카테고리 인기글 목록 가져오기
     public List<Blog> getRestaurantBestArticle() {
         List<Blog> best = blogMapper.getRestaurantBestArticle();
 
@@ -52,11 +52,9 @@ public class BlogService {
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
         return best;
     }
 
-    //7. 일상 카테고리 인기글 목록 가져오기
     public List<Blog> getDailyBestArticle() {
         List<Blog> best = blogMapper.getDailyBestArticle();
 
@@ -73,13 +71,12 @@ public class BlogService {
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
         return best;
     }
 
-    //1. 게시물 목록 가져오기
-    public List<Blog> getMovieArticles() {
-        List<Blog> articles = blogMapper.getMovieArticles();
+    //1. ###################### 게시물 목록 가져오기 ######################
+    public List<Blog> getMovieArticles(Page page) {
+        List<Blog> articles = blogMapper.getMovieArticles(page);
 
         //게시글 제목 ...붙이기
         for (Blog article : articles) {
@@ -98,8 +95,8 @@ public class BlogService {
         return articles;
     }
 
-    public List<Blog> getRestaurantArticles() {
-        List<Blog> articles = blogMapper.getRestaurantArticles();
+    public List<Blog> getRestaurantArticles(Page page) {
+        List<Blog> articles = blogMapper.getRestaurantArticles(page);
 
         //게시글 제목 ...붙이기
         for (Blog article : articles) {
@@ -114,7 +111,6 @@ public class BlogService {
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
 
         //3분 이내 신규글 new마크 붙이기
         for (Blog article : articles) {
@@ -128,12 +124,11 @@ public class BlogService {
                 article.setNewFlag(true);
             }
         }
-
         return articles;
     }
 
-    public List<Blog> getDailyArticles() {
-        List<Blog> articles = blogMapper.getDailyArticles();
+    public List<Blog> getDailyArticles(Page page) {
+        List<Blog> articles = blogMapper.getDailyArticles(page);
 
         //게시글 제목 ...붙이기
         for (Blog article : articles) {
@@ -148,7 +143,6 @@ public class BlogService {
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
 
         /*//3분 이내 신규글 new마크 붙이기
         for (Blog article : articles) {
@@ -167,8 +161,8 @@ public class BlogService {
     }
 
     // 전체 게시글 조회
-    public List<Blog> getAllArticles() {
-        List<Blog> articles = blogMapper.getAllArticles();
+    public List<Blog> getAllArticles(Page page) {
+        List<Blog> articles = blogMapper.getAllArticles(page);
 
         //게시글 내용 ...붙이기
         for (Blog article : articles) {
@@ -180,6 +174,9 @@ public class BlogService {
         return articles;
     }
 
+    //총 게시물 수 조회
+    // **************** 학원 코드는 static이 아닌데 여기선 static 오류가 떠서,, 일단 바꿔보았음
+    public int getCount(Page page) {return blogMapper.getTotalCount(page); }
 
     //    ################# 게시글 리스트(테이블) 조회 #################
     public List<Blog> getSearchArticles() {

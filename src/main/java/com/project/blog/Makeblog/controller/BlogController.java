@@ -1,6 +1,8 @@
 package com.project.blog.Makeblog.controller;
 
 
+import com.project.blog.Makeblog.common.paging.Page;
+import com.project.blog.Makeblog.common.paging.PageMaker;
 import com.project.blog.Makeblog.domain.Blog;
 import com.project.blog.Makeblog.service.BlogService;
 import lombok.RequiredArgsConstructor;
@@ -125,13 +127,20 @@ public class BlogController {
 
     // 카테고리(영화)로 이동
     @GetMapping("/movie-list")
-    public String movieList(Model model, Blog blog) {
+    public String movieList(Model model, Blog blog, Page page) {
         log.info("/board/movie-list GET 요청 발생");
-        List<Blog> articles = blogService.getMovieArticles();
+        List<Blog> articles = blogService.getMovieArticles(page);
 
-        //List<Blog> articles를 article로 이름짓는다 ->
-        // 앞으로 사용할 모델의 명은 "article" 이다.
+        /*    **************** 헷갈리지 말기 ****************
+
+        List<Blog> articles를 article로 이름짓는다 ->
+         앞으로 사용할 모델의 명은 "article" 이다.*/
         model.addAttribute("article", articles);
+
+        //페이징을 위한 총 게시물 수는 DB에 갔다 와야 해서 서비스에서 받는다. => 서비스에서 코드 생성
+        model.addAttribute("maker",
+                new PageMaker(page, BlogService.getCount(page)));
+
 
         List<Blog> bestArticles = blogService.getMovieBestArticle();
         model.addAttribute("bestArticles", bestArticles);
@@ -144,9 +153,9 @@ public class BlogController {
 
     // 카테고리(맛집)로 이동
     @GetMapping("/restaurant-list")
-    public String restaurantList(Model model, Blog blog) {
+    public String restaurantList(Model model, Blog blog, Page page) {
         log.info("/board/restaurant-list GET 요청 발생");
-        List<Blog> articles = blogService.getRestaurantArticles();
+        List<Blog> articles = blogService.getRestaurantArticles(page);
         model.addAttribute("article", articles);
 
         List<Blog> bestArticles = blogService.getRestaurantBestArticle();
@@ -161,9 +170,9 @@ public class BlogController {
 
     // 카테고리(일상)로 이동
     @GetMapping("/daily-list")
-    public String dailyList(Model model, Blog blog) {
+    public String dailyList(Model model, Blog blog, Page page) {
         log.info("/board/daily-list GET 요청 발생");
-        List<Blog> articles = blogService.getDailyArticles();
+        List<Blog> articles = blogService.getDailyArticles(page);
         model.addAttribute("article", articles);
         log.info(blog.getSerialNo());
 
@@ -178,10 +187,10 @@ public class BlogController {
 
     // 카테고리(전체 조회)로 이동
     @GetMapping("/guest-book")
-    public String guestList(Model model) {
+    public String guestList(Model model, Page page) {
         log.info("/board/guest-book GET 요청 발생");
 
-        List<Blog> articles = blogService.getAllArticles();
+        List<Blog> articles = blogService.getAllArticles(page);
         model.addAttribute("articles", articles);
         model.addAttribute("flag", "all");
 
