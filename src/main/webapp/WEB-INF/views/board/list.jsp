@@ -294,14 +294,14 @@
                         </div>
 
                         <div class="list-container">
-                            <!-- <div class="amount">
+                            <div class="amount">
                                 <a
-                                    href="/board/list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
+                                    href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
                                 <a
-                                    href="/board/list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
+                                    href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
                                 <a
-                                    href="/board/list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
-                            </div> -->
+                                    href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
+                            </div>
 
                             <table border="1" id="list-table" class="table table-sm" width="100%">
 
@@ -352,19 +352,33 @@
                     </div>
                 </div>
             </div>
-            <div class="pegination">
-                <!--
-                <ul>
-                    <li><i class="fa fa-angle-left" aria-hidden="true"></i></li>
-                    <li class="active">1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                </ul>
--->
 
+            <!-- 페이징 영역 -->
+            <!-- 무비리스트 안되면 그냥 리스트로 바꾸어 보기 -->
+            <ul class="pagination">
+
+                <c:if test="${maker.prev}">
+                    <li class="page-item"><a class="page-numbers page-link"
+                            href="/board/movie-list?pageNum=${maker.beginPage - 1}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">prev</a>
+                    </li>
+                </c:if>
+
+                <c:forEach var="i" begin="${maker.beginPage}" end="${maker.endPage}" step="1">
+                    <li class="page-item"><a class="page-numbers page-link"
+                            href="/board/movie-list?pageNum=${i}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">${i}</a>
+                    </li>
+                </c:forEach>
+
+                <c:if test="${maker.next}">
+                    <li class="page-item"><a class="page-numbers page-link"
+                            href="/board/movie-list?pageNum=${maker.endPage + 1}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">next</a>
+                    </li>
+                </c:if>
+            </ul>
+
+            <!-- 페이징영역 기존 코드
+                <div class="pegination">
                 <div class="nav-links">
-                    <!-- 1번만 span인 이유가 있나요? a로 바꾸었는데 문제있으면 확인해봐야할거같아요 -->
                     <a class="page-numbers current">1</a>
                     <a class="page-numbers" href="#">2</a>
                     <a class="page-numbers" href="#">3</a>
@@ -375,7 +389,7 @@
                     <a class="page-numbers" href="#">8</a>
                     <a class="page-numbers" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </div>
-            </div>
+            </div> -->
         </section>
 
         <%@ include file="../include/footer.jsp" %>
@@ -385,9 +399,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/active.js"></script>
+
     <script>
-        //삭제 버튼 클릭 이벤트
-        //삭제 버튼에 바로 달면 첫째줄만 된다. 수많은 삭제여서 버블링, 부모 태그에 써야함
+        // 삭제 버튼 클릭 이벤트
+        // 삭제 버튼에 바로 달면 첫째줄만 된다. 수많은 삭제여서 버블링, 부모 태그에 써야함
         const delBtn = document.querySelector('del-btn');
         const table = document.querySelector('table');
 
@@ -410,6 +425,23 @@
                 location.href = '/board/delete?serialNo=' + serialNo;
             }
         });
+
+        //현재 위치한 페이지 li태그에 클래스 p-active를 부여하는 함수(서버가 요청페이지 넘버알고있어서 받아와야함)
+        function appendPageActive(curPageNum) {
+            const $ul = document.querySelector('.pagination');
+            for (let $li of [...$ul.children]){
+                //모든 li들 중에 data-page 속성값이 현재 요청페이지 번호와 같다면
+                if($li.dataset.page === curPageNum){
+                    $li.classList.add('p-active');
+                    break;
+                }
+            }
+        }
+
+        //메인 실행부   (common.PageMaker가 알고있다.)
+        (function () {
+            appendPageActive('${maker.page.pageNum}');
+        })();
     </script>
 </body>
 

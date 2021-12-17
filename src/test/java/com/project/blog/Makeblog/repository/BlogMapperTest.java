@@ -1,5 +1,6 @@
 package com.project.blog.Makeblog.repository;
 
+import com.project.blog.Makeblog.common.paging.Page;
 import com.project.blog.Makeblog.domain.Blog;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -65,8 +66,8 @@ class BlogMapperTest {
 
     @Test
     @DisplayName("전체 게시물을 글번호 내림차순으로 조회해야 한다.")
-    void selectAll() {
-        List<Blog> articles = blogMapper.getSearchArticles();
+    void selectAll(Page page) {
+        List<Blog> articles = blogMapper.getSearchArticles(page);
 
         for (Blog article : articles) {
             System.out.println(article);

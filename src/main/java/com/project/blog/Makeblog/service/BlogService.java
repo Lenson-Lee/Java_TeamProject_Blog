@@ -25,17 +25,14 @@ public class BlogService {
             if (title.length() > 12)
                 article.setBoardTitle(title.substring(0, 12) + "...");
         }
-
         //게시글 내용 ...붙이기
         for (Blog article : best) {
             String content = article.getBoardContent();
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
         return best;
     }
-
     public List<Blog> getRestaurantBestArticle() {
         List<Blog> best = blogMapper.getRestaurantBestArticle();
 
@@ -45,7 +42,6 @@ public class BlogService {
             if (title.length() > 12)
                 article.setBoardTitle(title.substring(0, 12) + "...");
         }
-
         //게시글 내용 ...붙이기
         for (Blog article : best) {
             String content = article.getBoardContent();
@@ -54,7 +50,6 @@ public class BlogService {
         }
         return best;
     }
-
     public List<Blog> getDailyBestArticle() {
         List<Blog> best = blogMapper.getDailyBestArticle();
 
@@ -64,7 +59,6 @@ public class BlogService {
             if (title.length() > 12)
                 article.setBoardTitle(title.substring(0, 12) + "...");
         }
-
         //게시글 내용 ...붙이기
         for (Blog article : best) {
             String content = article.getBoardContent();
@@ -74,9 +68,10 @@ public class BlogService {
         return best;
     }
 
+
     //1. ###################### 게시물 목록 가져오기 ######################
     public List<Blog> getMovieArticles(Page page) {
-        List<Blog> articles = blogMapper.getMovieArticles(page);
+        List<Blog> articles = blogMapper.getSearchArticles(page);
 
         //게시글 제목 ...붙이기
         for (Blog article : articles) {
@@ -84,14 +79,22 @@ public class BlogService {
             if (title.length() > 12)
                 article.setBoardTitle(title.substring(0, 12) + "...");
         }
-
         //게시글 내용 ...붙이기
         for (Blog article : articles) {
             String content = article.getBoardContent();
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
+        //3분 이내 신규글 new마크 붙이기
+        for (Blog article : articles) {
+            //각 게시물들의 등록시간 읽어오기(밀리초)
+            long regTime = article.getBoardDate().getTime();
+            //현재시간 읽어오기(밀리초)
+            long now = System.currentTimeMillis();
+            if (now - regTime < 60 * 10 * 1000) {
+                article.setNewFlag(true);
+            }
+        }
         return articles;
     }
 
@@ -104,14 +107,12 @@ public class BlogService {
             if (title.length() > 12)
                 article.setBoardTitle(title.substring(0, 12) + "...");
         }
-
         //게시글 내용 ...붙이기
         for (Blog article : articles) {
             String content = article.getBoardContent();
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
         //3분 이내 신규글 new마크 붙이기
         for (Blog article : articles) {
             //각 게시물들의 등록시간 읽어오기(밀리초)
@@ -136,15 +137,13 @@ public class BlogService {
             if (title.length() > 12)
                 article.setBoardTitle(title.substring(0, 12) + "...");
         }
-
         //게시글 내용 ...붙이기
         for (Blog article : articles) {
             String content = article.getBoardContent();
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
-        /*//3분 이내 신규글 new마크 붙이기
+            //3분 이내 신규글 new마크 붙이기
         for (Blog article : articles) {
             //각 게시물들의 등록시간 읽어오기(밀리초)
             long regTime = article.getBoardDate().getTime();
@@ -152,11 +151,10 @@ public class BlogService {
             //현재시간 읽어오기(밀리초)
             long now = System.currentTimeMillis();
 
-            if (now - regTime < 60 * 3 * 1000) {
+            if (now - regTime < 60 * 10 * 1000) {
                 article.setNewFlag(true);
             }
-        }*/
-
+        }
         return articles;
     }
 
@@ -170,17 +168,28 @@ public class BlogService {
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-
         return articles;
     }
 
-    //총 게시물 수 조회
-    // **************** 학원 코드는 static이 아닌데 여기선 static 오류가 떠서,, 일단 바꿔보았음
-    public int getCount(Page page) {return blogMapper.getTotalCount(page); }
+    //################## 총 게시물 수 조회(하단은 카테고리별) ##################
+    public int getCount(Page page) {
+        return blogMapper.getTotalCount(page);
+    }
+    public int getMovieCount(Page page) {
+        return blogMapper.getMovieTotalCount(page);
+    }
+    public int getRestaurantCount(Page page) {
+        return blogMapper.getRestaurantTotalCount(page);
+    }
+    public int getDailyCount(Page page) {
+        return blogMapper.getDailyTotalCount(page);
+    }
+
 
     //    ################# 게시글 리스트(테이블) 조회 #################
-    public List<Blog> getSearchArticles() {
-        List<Blog> articles = blogMapper.getSearchArticles();
+    //    getMovieArticles랑 뭐가 다른지 모르겠다. 안쓰이는 코드같이 보임. 추후에 삭제 예정
+    public List<Blog> getSearchArticles(Page page) {
+        List<Blog> articles = blogMapper.getSearchArticles(page);
 
         //게시글 제목 ...붙이기
         //게시글 내용은 따로 나타나지 않아서 생략했다.
@@ -200,10 +209,8 @@ public class BlogService {
 
             if (now - regTime < 60 * 3 * 1000) {
                 blog.setNewFlag(true);
-
             }
         }
-
         return articles;
     }
 

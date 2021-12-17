@@ -139,7 +139,7 @@ public class BlogController {
 
         //페이징을 위한 총 게시물 수는 DB에 갔다 와야 해서 서비스에서 받는다. => 서비스에서 코드 생성
         model.addAttribute("maker",
-                new PageMaker(page, BlogService.getCount(page)));
+                new PageMaker(page, blogService.getMovieCount(page)));
 
 
         List<Blog> bestArticles = blogService.getMovieBestArticle();

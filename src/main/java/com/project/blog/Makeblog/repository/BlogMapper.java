@@ -24,18 +24,20 @@ public interface BlogMapper {
 
     //1-2 페이지 기능 추가 후 서비스, 컨트롤러에 파라미터로 page 넣는다.
     List<Blog> getMovieArticles(Page page);
-
     List<Blog> getRestaurantArticles(Page page);
-
     List<Blog> getDailyArticles(Page page);
-    //전체 게시물 조회
+
     List<Blog> getAllArticles(Page page);
 
-    //1-3. 검색 적용    (최종본. 1. 1-2 는 연습용)
-    List<Blog> getSearchArticles();
+    //1-3. #### 최종 페이징, 검색 적용    (최종본. 1. 1-2 는 연습용)
+    List<Blog> getSearchArticles(Page page);
 
-    //총 게시물 수 조회
-    int getTotalCount(Page page);
+    // 각 카테고리별 총 게시물 수 조회
+    int getTotalCount(Page page);   //전체 수
+
+    int getMovieTotalCount(Page page);
+    int getDailyTotalCount(Page page);
+    int getRestaurantTotalCount(Page page);
 
     //2. 게시물 상세 조회
     Blog getContent(int serialNo, int categoryNo);
@@ -57,13 +59,11 @@ public interface BlogMapper {
     //6-2. ######################### 게시글 등록시 보드넘버 상승
     int upBoardNo(int serialNo);
 
-    //7. 조회수 5이상인 영화 카테고리에 게시물 등록
+    //7. 각 카테고리에 인기 게시물 등록
     List<Blog> getMovieBestArticle();
 
-    //7. 조회수 5이상인 맛집 카테고리에 게시물 등록
     List<Blog> getRestaurantBestArticle();
 
-    //7. 조회수 5이상인 일상 카테고리에 게시물 등록
     List<Blog> getDailyBestArticle();
 
 
