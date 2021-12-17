@@ -71,7 +71,7 @@ public class BlogService {
 
     //1. ###################### 게시물 목록 가져오기 ######################
     public List<Blog> getMovieArticles(Page page) {
-        List<Blog> articles = blogMapper.getSearchArticles(page);
+        List<Blog> articles = blogMapper.getMovieArticles(page);
 
         //게시글 제목 ...붙이기
         for (Blog article : articles) {
