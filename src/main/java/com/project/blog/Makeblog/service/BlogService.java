@@ -187,7 +187,6 @@ public class BlogService {
 
 
     //    ################# 게시글 리스트(테이블) 조회 #################
-    //    getMovieArticles랑 뭐가 다른지 모르겠다. 안쓰이는 코드같이 보임. 추후에 삭제 예정
     public List<Blog> getSearchArticles(Page page) {
         List<Blog> articles = blogMapper.getSearchArticles(page);
 

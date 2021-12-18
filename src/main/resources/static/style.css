@@ -275,19 +275,21 @@ section.blog-post-area h4 span.author-name {
 
 
 
+
 /* 페이지 숫자 */
-.blog-post-area .pegination {
+.blog-post-area .pagination {
     margin-top: 60px;
     margin-bottom: 60px;
+    display: block;
 }
 
-.blog-post-area .pegination .nav-links {
+.blog-post-area .pagination .nav-links {
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
-.blog-post-area .pegination .nav-links .page-numbers {
+.blog-post-area .pagination .nav-links .page-numbers {
     border: 1px solid #448aff;
     border-radius: 50%;
     color: #448aff;
@@ -307,17 +309,17 @@ section.blog-post-area h4 span.author-name {
     margin: 0 20px 0 40px;
 }
 
-.blog-post-area .pegination .nav-links .page-numbers.current {
+.blog-post-area .pagination .nav-links .page-numbers.current {
     background: #448aff;
     color: #fff;
 }
 
-.blog-post-area .pegination .nav-links .page-numbers:hover {
+.blog-post-area .pagination .nav-links .page-numbers:hover {
     background: #448aff;
     color: #fff;
 }
 
-.blog-post-area .pegination .nav-links a {
+.blog-post-area .pagination .nav-links a {
     text-decoration: none;
 }
 
@@ -818,19 +820,28 @@ section.blog-post-area h4 span.author-name {
     background: rgb(236, 236, 236);
 }
 
+
+
+/* amount CSS */
+.list-container .amount-box {
+
+    margin-right: 0;
+}
+
 .blog-post-area-style .list-container .amount {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 20px;
     position: relative;
-    right: 5%;
+    
 }
 
 .blog-post-area-style .list-container .amount a {
     display: block;
-    color: #fff;
-    background: #f00;
+    color: #448aff;
+    /* background: #448aff; */
+    border: 1px solid #448aff;
     width: 50px;
     height: 20px;
     border-radius: 5px;
@@ -838,5 +849,14 @@ section.blog-post-area h4 span.author-name {
     text-align: center;
     font-weight: 700;
     text-decoration: none;
+}
 
+.blog-post-area-style .list-container .amount a.current {
+    background: #448aff;
+    color: #fff;
+}
+
+.blog-post-area-style .list-container .amount a:hover {
+    background: #448aff;
+    color: #fff;
 }

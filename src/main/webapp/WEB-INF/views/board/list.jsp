@@ -294,13 +294,16 @@
                         </div>
 
                         <div class="list-container">
-                            <div class="amount">
-                                <a
+                            
+                            <div class="amount-box">
+                                <div class="amount">
+                                    <a
                                     href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
-                                <a
+                                    <a
                                     href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
-                                <a
+                                    <a
                                     href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
+                                </div>
                             </div>
 
                             <table border="1" id="list-table" class="table table-sm" width="100%">
@@ -357,23 +360,27 @@
             <!-- 무비리스트 안되면 그냥 리스트로 바꾸어 보기 -->
             <ul class="pagination">
 
-                <c:if test="${maker.prev}">
-                    <li class="page-item"><a class="page-numbers page-link"
-                            href="/board/movie-list?pageNum=${maker.beginPage - 1}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">prev</a>
-                    </li>
-                </c:if>
+                <div class="nav-links">
 
-                <c:forEach var="i" begin="${maker.beginPage}" end="${maker.endPage}" step="1">
-                    <li class="page-item"><a class="page-numbers page-link"
-                            href="/board/movie-list?pageNum=${i}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">${i}</a>
-                    </li>
-                </c:forEach>
+                    <c:if test="${maker.prev}">
+                        <li class="page-item page-numbers"><a class=" page-link"
+                                href="/board/movie-list?pageNum=${maker.beginPage - 1}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">prev</a>
+                        </li>
+                    </c:if>
 
-                <c:if test="${maker.next}">
-                    <li class="page-item"><a class="page-numbers page-link"
-                            href="/board/movie-list?pageNum=${maker.endPage + 1}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">next</a>
-                    </li>
-                </c:if>
+                    <c:forEach var="i" begin="${maker.beginPage}" end="${maker.endPage}" step="1">
+                        <li class="page-item page-numbers"><a class=" page-link"
+                                href="/board/movie-list?pageNum=${i}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">${i}</a>
+                        </li>
+                    </c:forEach>
+
+                    <c:if test="${maker.next}">
+                        <li class="page-item page-numbers"><a class="page-link"
+                                href="/board/movie-list?pageNum=${maker.endPage + 1}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">next</a>
+                        </li>
+                    </c:if>
+
+                </div>
             </ul>
 
             <!-- 페이징영역 기존 코드
@@ -429,9 +436,9 @@
         //현재 위치한 페이지 li태그에 클래스 p-active를 부여하는 함수(서버가 요청페이지 넘버알고있어서 받아와야함)
         function appendPageActive(curPageNum) {
             const $ul = document.querySelector('.pagination');
-            for (let $li of [...$ul.children]){
+            for (let $li of [...$ul.children]) {
                 //모든 li들 중에 data-page 속성값이 현재 요청페이지 번호와 같다면
-                if($li.dataset.page === curPageNum){
+                if ($li.dataset.page === curPageNum) {
                     $li.classList.add('p-active');
                     break;
                 }

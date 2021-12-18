@@ -37,10 +37,42 @@
 
     <!--  #################### 카테고리별 최신글 띄우기 #################### -->
     <select id="getMovieArticles" resultMap="boardMap">
-        SELECT * FROM board
-        WHERE category_no = 1
-        ORDER BY serial_no DESC
+        <![CDATA[
+        SELECT
+        serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
+        FROM
+        (SELECT  /*+INDEX_DESC(board sys_c007043)*/
+        rownum rn, serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
+        FROM board
+        WHERE rownum <= #{pageNum} * #{amount}
+        AND category_no = 1 )
+        WHERE rn > (#{pageNum} - 1) * #{amount}
+        ]]>
+
+<!--        학원에서 했던 getSearchArticles 코드에서 if문 빼고 넣어도 오류가 났었는데
+            제 생각에는 CDATA가 두 번 들어가서일수도 있을 것 같아요..
+            오라클 힌트 쓰는 이유가 AND를 쓸 수 없어서? 라고 들었던 것 같은데 자세한 걸 몰라서 설명이 어렵지만..
+            자세히 보니까 63, 64번은 인덱스 구문의 조건이고, 하단의 67번 WHERE 는 전체 셀렉트 구문 조건인거같아요
+            카테고리 조건도 처음에 전체 조건문에 넣어봤는데 게시글이 하나도 안나오길래 인덱스에 넣어보니 되네요..
+            선필씨가 알려주지 않았으면 계속 삽질하고 있었을거에요...-->
+<!--        <![CDATA[-->
+<!--            SELECT-->
+<!--            board_no, writer, title, content, reg_date, view_cnt-->
+<!--            FROM-->
+<!--            (SELECT  /*+INDEX_DESC(board pk_board)*/-->
+<!--            rownum rn, board_no, title, writer, content, reg_date, view_cnt-->
+<!--            FROM board-->
+<!--            WHERE 1=1-->
+<!--            ]]>-->
+<!--        <![CDATA[-->
+<!--                AND rownum <= #{pageNum} * #{amount})-->
+<!--            WHERE rn > (#{pageNum} - 1) * #{amount}-->
+<!--        ]]>-->
     </select>
+    <!--    getMovieArticles 원본 코드-->
+    <!--    SELECT * FROM board-->
+    <!--    WHERE category_no = 1-->
+    <!--    ORDER BY serial_no DESC-->
 
     <select id="getRestaurantArticles" resultMap="boardMap">
         SELECT * FROM board
