@@ -56,14 +56,13 @@ public interface BlogMapper {
     //6. 조회수 상승
     int upViewCount(int serialNo);
 
-    //6-2. ######################### 게시글 등록시 보드넘버 상승
+    //6-2. ######################### 게시글 등록시 보드넘버 상승->관련 코드 전부 삭제
     int upBoardNo(int serialNo);
+
 
     //7. 각 카테고리에 인기 게시물 등록
     List<Blog> getMovieBestArticle();
-
     List<Blog> getRestaurantBestArticle();
-
     List<Blog> getDailyBestArticle();
 
 

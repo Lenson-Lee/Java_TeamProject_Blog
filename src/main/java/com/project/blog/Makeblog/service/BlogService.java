@@ -15,7 +15,7 @@ public class BlogService {
 
     private final BlogMapper blogMapper;
 
-    //7. ##################### 인기글 목록 가져오기 #####################
+    // ##################### 인기글 목록 가져오기 #####################
     public List<Blog> getMovieBestArticle() {
         List<Blog> best = blogMapper.getMovieBestArticle();
 
@@ -76,8 +76,8 @@ public class BlogService {
         //게시글 제목 ...붙이기
         for (Blog article : articles) {
             String title = article.getBoardTitle();
-            if (title.length() > 12)
-                article.setBoardTitle(title.substring(0, 12) + "...");
+            if (title.length() > 20)
+                article.setBoardTitle(title.substring(0, 20) + "...");
         }
         //게시글 내용 ...붙이기
         for (Blog article : articles) {

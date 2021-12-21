@@ -157,7 +157,8 @@
                                                             href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
                                                             style="text-decoration: none;">글
                                                             수정하기</a>
-                                                        <a data-serial-no="${article.serialNo}" id="del-btn" href="#"
+                                                        <a data-serial-no="${article.serialNo}" data-category-no=${a.categoryNo}
+                                                        id="del-btn" href=""
                                                             style="text-decoration: none;">삭제</a>
                                                     </div>
 
@@ -216,11 +217,14 @@
                                             //삭제 버튼 클릭 이벤트
                                             const btn = document.getElementById('del-btn');
                                             btn.addEventListener('click', D => {
+
                                                 D.preventDefault(); //a태그 링크이동기능 중지
+
                                                 console.log('삭제버튼 클릭됨!');
                                                 const serialNo = D.target.dataset.serialNo;
+                                                const categoryNo = D.target.dataset.categoryNo;
                                                 console.log(serialNo);
-                                                location.href = '/board/delete?serialNo=' + serialNo;
+                                                location.href = '/board/delete?serialNo=' + serialNo + '&categoryNo=' + categoryNo;
                                             });
 
                                             //텍스트 길이에 맞게 높이 설정

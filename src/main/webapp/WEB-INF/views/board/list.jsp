@@ -345,7 +345,7 @@
                                         </td>
                                         <td>${a.boardViewCnt}</td>
                                         <td>
-                                            <a data-serial-no=${a.serialNo}
+                                            <a data-serial-no=${a.serialNo} data-category-no=${a.categoryNo}
                                                 class="badge rounded-pill bg-secondary del-btn" href="#">삭제</a>
                                         </td>
                                     </tr>
@@ -425,11 +425,13 @@
 
             //article.boardNo 변수는 forEach 함수에서 쓰는 태그라 함수가 끝나면서 사라져 사용이 불가능. => dataset 사용
             const serialNo = e.target.dataset.serialNo;
-
             console.log(serialNo);
 
+            const categoryNo = e.target.dataset.categoryNo;
+            console.log(categoryNo);
+
             if (confirm('정말로 삭제하겠습니까?')) {
-                location.href = '/board/delete?serialNo=' + serialNo;
+                location.href = '/board/delete?serialNo=' + serialNo + '&categoryNo=' + categoryNo;
             }
         });
 
