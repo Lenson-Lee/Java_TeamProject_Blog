@@ -345,7 +345,7 @@
                                         </td>
                                         <td>${a.boardViewCnt}</td>
                                         <td>
-                                            <a data-serial-no=${a.serialNo} data-category-no=${a.categoryNo}
+                                            <a data-serial-no="${a.serialNo}" data-category-no="${a.categoryNo}"
                                                 class="badge rounded-pill bg-secondary del-btn" href="#">삭제</a>
                                         </td>
                                     </tr>

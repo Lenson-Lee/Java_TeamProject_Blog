@@ -47,7 +47,7 @@ public interface BlogMapper {
     boolean insertArticle(Blog blog);
 
     //4. 게시물 삭제
-    boolean deleteArticle(int serialNo);
+    boolean deleteArticle(int serialNo, int categoryNo);
 
     //5. 게시물 수정
     boolean modifyArticle(Blog blog);

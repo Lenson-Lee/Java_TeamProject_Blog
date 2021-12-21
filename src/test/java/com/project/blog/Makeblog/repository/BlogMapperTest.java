@@ -54,7 +54,7 @@ class BlogMapperTest {
     @Transactional
     @Rollback
     void delete() {
-        blogMapper.deleteArticle(3);
+        blogMapper.deleteArticle(3, 1);
     }
 
 //    @Test

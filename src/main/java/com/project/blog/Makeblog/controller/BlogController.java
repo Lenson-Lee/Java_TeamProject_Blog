@@ -90,7 +90,7 @@ public class BlogController {
     @GetMapping("/delete")
     public String delete(int serialNo, int categoryNo) {
         log.info("/board/delete GET ! - " + serialNo);
-        blogService.remove(serialNo);
+        blogService.remove(serialNo, categoryNo);
 
         if (categoryNo == 1) {
             log.info("/board/movie-list 로 이동!");

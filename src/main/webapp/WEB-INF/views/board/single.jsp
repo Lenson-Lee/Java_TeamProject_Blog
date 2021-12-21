@@ -157,7 +157,7 @@
                                                             href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
                                                             style="text-decoration: none;">글
                                                             수정하기</a>
-                                                        <a data-serial-no="${article.serialNo}" data-category-no=${a.categoryNo}
+                                                        <a data-serial-no="${article.serialNo}" data-category-no="${article.categoryNo}"
                                                         id="del-btn" href=""
                                                             style="text-decoration: none;">삭제</a>
                                                     </div>
@@ -215,6 +215,7 @@
 
                                         <script>
                                             //삭제 버튼 클릭 이벤트
+                                            
                                             const btn = document.getElementById('del-btn');
                                             btn.addEventListener('click', D => {
 
@@ -224,6 +225,8 @@
                                                 const serialNo = D.target.dataset.serialNo;
                                                 const categoryNo = D.target.dataset.categoryNo;
                                                 console.log(serialNo);
+                                                console.log(categoryNo);
+                                                
                                                 location.href = '/board/delete?serialNo=' + serialNo + '&categoryNo=' + categoryNo;
                                             });
 
