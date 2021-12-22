@@ -294,15 +294,15 @@
                         </div>
 
                         <div class="list-container">
-                            
+
                             <div class="amount-box">
                                 <div class="amount">
                                     <a
-                                    href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
+                                        href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
                                     <a
-                                    href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
+                                        href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
                                     <a
-                                    href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
+                                        href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
                                 </div>
                             </div>
 
@@ -356,6 +356,29 @@
                 </div>
             </div>
 
+            <!-- 검색창 영역 -->
+            <!-- <div class="search">
+                <form action="/board" id="search-form">
+
+                    <input type="hidden" name="amount" value="${maker.page.amount}">
+
+                    <select name="type">
+                        <option value="title" ${maker.page.type == 'title' ? 'selected' : ''}>제목</option>
+                        <option value="content" ${maker.page.type == 'content' ? 'selected' : ''}>내용</option>
+                        <option value="writer" ${maker.page.type == 'writer' ? 'selected' : ''}>작성자</option>
+                        <option value="titleContent" ${maker.page.type == 'titleContent' ? 'selected' : ''}>제목+내용
+                        </option>
+                    </select>
+
+                    <input type="text" name="keyword" placeholder="검색어를 입력!" value="${maker.page.keyword}">
+
+                    <button type="submit">검색</button>
+
+                </form>
+            </div> -->
+
+
+
             <!-- 페이징 영역 -->
             <!-- 무비리스트 안되면 그냥 리스트로 바꾸어 보기 -->
             <ul class="pagination">
@@ -382,21 +405,6 @@
 
                 </div>
             </ul>
-
-            <!-- 페이징영역 기존 코드
-                <div class="pegination">
-                <div class="nav-links">
-                    <a class="page-numbers current">1</a>
-                    <a class="page-numbers" href="#">2</a>
-                    <a class="page-numbers" href="#">3</a>
-                    <a class="page-numbers" href="#">4</a>
-                    <a class="page-numbers" href="#">5</a>
-                    <a class="page-numbers" href="#">6</a>
-                    <a class="page-numbers" href="#">7</a>
-                    <a class="page-numbers" href="#">8</a>
-                    <a class="page-numbers" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                </div>
-            </div> -->
         </section>
 
         <%@ include file="../include/footer.jsp" %>
