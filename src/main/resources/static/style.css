@@ -821,7 +821,7 @@ section.blog-post-area h4 span.author-name {
 }
 
 
-
+/* #################### 페이징 css ####################*/
 /* amount CSS */
 .list-container .amount-box {
 
@@ -859,4 +859,10 @@ section.blog-post-area h4 span.author-name {
 .blog-post-area-style .list-container .amount a:hover {
     background: #448aff;
     color: #fff;
+}
+
+
+/* #################### 검색기능 ####################*/
+#search-form .row {
+    padding-left: 15px;
 }

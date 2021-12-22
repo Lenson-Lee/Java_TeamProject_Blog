@@ -57,72 +57,63 @@
             <div class="container">
                 <div class="row">
                     <div class="blog-post-area-style">
-                        <!-- <div class="col-md-12">
-                            <div class="single-post-big">
-                                <div class="big-image"> -->
 
+                        <form action="/board/movie-list" id="search-form">
 
-                        <!-- #################################### 대표 사진 조건문 코드  ####################################### -->
+                            <input type="hidden" name="amount" value="${maker.page.amount}">
 
-                        <!-- <c:set var="menu" value="${flag}" />
-                                    <c:choose>
-                                        <c:when test="${menu == 'movie'}">
-                                            <img src="../../img/movie-bg-img.jpg" alt="이미지" id="big-img" />
-                                        </c:when>
+                            <div class="row">
+                                <div class="col-xs-6 col-md-4">
+                                    <div class="input-group">
+                                        
+                                        
+                                        <!-- 선택창 -->
+                                        <select name="type">
+                                            <option value="title" ${maker.page.type=='title' ? 'selected' : '' }>제목</option>
+                                            <option value="content" ${maker.page.type=='content' ? 'selected' : '' }>내용</option>
+                                            <!-- <option value="writer" ${maker.page.type == 'writer' ? 'selected' : ''}>작성자</option> -->
+                                            <option value="titleContent" ${maker.page.type=='titleContent' ? 'selected' : '' }>
+                                                제목+내용
+                                            </option>
+                                        </select>
 
-                                        <c:when test="${menu == 'res'}">
-                                            <img src="../../img/res-bg-img.jpg" alt="이미지" id="big-img" />
-                                        </c:when>
+                                        <!-- 텍스트 입력창 -->
+                                        <input type="text" class="form-control" id="txtSearch" name="keyword"
+                                            placeholder="검색어를 입력!" value="${maker.page.keyword}">
 
-                                        <c:when test="${menu == 'day'}">
-                                            <img src="../../img/day-bg-img.jpg" alt="이미지" id="big-img" />
-                                        </c:when>
-
-                                    </c:choose>
-
-                                </div> -->
-
-                        <!-- #################################### 대표글 코드  ####################################### -->
-
-                        <!-- <div class="big-text">
-                                    <c:choose>
-
-                                        <c:when test="${menu == 'movie'}">
-                                            <h3><a href="#">영화 카테고리</a></h3>
-                                            <p>
-                                                영화 리뷰 공간
-                                            </p>
-                                            <p>
-                                                50년 인생 통틀어 가장 인상깊었던 인생영화 소개해드립니다.
-                                            </p>
-                                        </c:when>
-
-
-                                        <c:when test="${menu == 'res'}">
-                                            <h3><a href="#">맛집 카테고리</a></h3>
-                                            <p>
-                                                50년 인생 통틀어 가장 맛있었던 인생맛집 소개해드립니다.
-                                            </p>
-                                            
-                                        </c:when>
-
-
-                                        <c:when test="${menu == 'day'}">
-                                            <h3><a href="#">일상 카테고리</a></h3>
-                                            <p>
-                                                50년 인생 통틀어 가장 인상깊었던 제 일화 소개해드립니다.
-                                            </p>
-                                            
-                                        </c:when>
-                                    </c:choose>
-
-                                    <h4><span class="author">Posted By:
-                                            <span class="author-name">홍길동</span></span>
-                                    </h4>
+                                        <!-- submit -->
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit">
+                                                <!-- 아이콘 -->
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> -->
-                        <!-- </div> -->
+                            </div>
+                        </form>
 
+                        <!-- #################################### 검색창 영역 #################################### -->
+                        <!-- <div class="search">
+                            <form action="/board/movie-list" id="search-form">
+
+                                <input type="hidden" name="amount" value="${maker.page.amount}">
+
+                                <select name="type">
+                                    <option value="title" ${maker.page.type=='title' ? 'selected' : '' }>제목</option>
+                                    <option value="content" ${maker.page.type=='content' ? 'selected' : '' }>내용</option>
+                                    
+                                    <option value="titleContent" ${maker.page.type=='titleContent' ? 'selected' : '' }>
+                                        제목+내용
+                                    </option>
+                                </select>
+
+                                <input type="text" name="keyword" placeholder="검색어를 입력!" value="${maker.page.keyword}">
+
+                                <button type="submit">검색</button>
+
+                            </form>
+                        </div> -->
 
                         <!-- #################################### 최신글 코드  ####################################### -->
                         <div class="single-post">
@@ -356,30 +347,8 @@
                 </div>
             </div>
 
-            <!-- 검색창 영역 -->
-            <!-- <div class="search">
-                <form action="/board" id="search-form">
 
-                    <input type="hidden" name="amount" value="${maker.page.amount}">
-
-                    <select name="type">
-                        <option value="title" ${maker.page.type == 'title' ? 'selected' : ''}>제목</option>
-                        <option value="content" ${maker.page.type == 'content' ? 'selected' : ''}>내용</option>
-                        <option value="writer" ${maker.page.type == 'writer' ? 'selected' : ''}>작성자</option>
-                        <option value="titleContent" ${maker.page.type == 'titleContent' ? 'selected' : ''}>제목+내용
-                        </option>
-                    </select>
-
-                    <input type="text" name="keyword" placeholder="검색어를 입력!" value="${maker.page.keyword}">
-
-                    <button type="submit">검색</button>
-
-                </form>
-            </div> -->
-
-
-
-            <!-- 페이징 영역 -->
+            <!-- ############################# 페이징 영역 ############################# -->
             <!-- 무비리스트 안되면 그냥 리스트로 바꾸어 보기 -->
             <ul class="pagination">
 

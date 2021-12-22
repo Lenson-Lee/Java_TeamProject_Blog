@@ -71,7 +71,10 @@ public class BlogService {
 
     //1. ###################### 게시물 목록 가져오기 ######################
     public List<Blog> getMovieArticles(Page page) {
-        List<Blog> articles = blogMapper.getMovieArticles(page);
+//        List<Blog> articles = blogMapper.getMovieArticles(page);
+
+        //1-3. 최종 검색기능 추가한 서비스
+        List<Blog> articles = blogMapper.getSearchArticles(page);
 
         //게시글 제목 ...붙이기
         for (Blog article : articles) {
@@ -171,7 +174,7 @@ public class BlogService {
         return articles;
     }
 
-    //################## 총 게시물 수 조회(하단은 카테고리별) ##################
+    //################## 페이징을 위해 총 게시물 수 조회(하단은 카테고리별) ##################
     public int getCount(Page page) {
         return blogMapper.getTotalCount(page);
     }
@@ -187,7 +190,7 @@ public class BlogService {
 
 
     //    ################# 게시글 리스트(테이블) 조회 #################
-    public List<Blog> getSearchArticles(Page page) {
+  /*  public List<Blog> getSearchArticles(Page page) {
         List<Blog> articles = blogMapper.getSearchArticles(page);
 
         //게시글 제목 ...붙이기
@@ -211,7 +214,7 @@ public class BlogService {
             }
         }
         return articles;
-    }
+    }*/
 
     // 2. 게시물 상세 조회
     @Transactional

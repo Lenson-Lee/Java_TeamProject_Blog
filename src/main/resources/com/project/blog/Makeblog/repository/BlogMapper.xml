@@ -125,30 +125,29 @@
     <select id="getSearchArticles" resultMap="boardMap">
 
         <![CDATA[
-                    SELECT
-            serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
+            SELECT
+                serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
             FROM
-            (SELECT  /*+INDEX_DESC(board sys_c007043)*/
-            rownum rn, serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
-            FROM board
-            WHERE rownum <= 10)
-            AND category_no = 1
+                (
+                SELECT  /*+INDEX_DESC(board sys_c007043)*/
+                rownum rn, serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
+                FROM board
+                WHERE rownum <= 10
                     ]]>
-        <if test="type == 'title'">
-            AND title LIKE '%'|| #{keyword} || '%'
-        </if>
-        <if test="type == 'content'">
-            AND content LIKE '%'|| #{keyword} || '%'
-        </if>
-        <if test="type == 'writer'">
-            AND writer LIKE '%'|| #{keyword} || '%'
-        </if>
-        <if test="type == 'titleContent'">
-            AND title LIKE '%'|| #{keyword} || '%'
-            OR content LIKE '%'|| #{keyword} || '%'
-        </if>
+            <if test="type == 'title'">
+                AND board_title LIKE '%'|| #{keyword} || '%'
+            </if>
+            <if test="type == 'content'">
+                AND board_content LIKE '%'|| #{keyword} || '%'
+            </if>
+            <if test="type == 'titleContent'">
+                AND board_title LIKE '%'|| #{keyword} || '%'
+                OR board_content LIKE '%'|| #{keyword} || '%'
+            </if>
         <![CDATA[
-                AND rownum <= #{pageNum} * #{amount})
+                AND rownum <= #{pageNum} * #{amount}
+
+                )
             WHERE rn > (#{pageNum} - 1) * #{amount}
         ]]>
 
@@ -179,17 +178,14 @@
         FROM board
         WHERE category_no = 1
         <if test="type == 'title'">
-            AND title LIKE '%' || #{keyword} || '%'
+            AND board_title LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'content'">
-            AND content LIKE '%' || #{keyword} || '%'
-        </if>
-        <if test="type == 'writer'">
-            AND writer LIKE '%' || #{keyword} || '%'
+            AND board_content LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'titleContent'">
-            AND title LIKE '%' || #{keyword} || '%'
-            OR content LIKE '%' || #{keyword} || '%'
+            AND board_title LIKE '%' || #{keyword} || '%'
+            OR board_content LIKE '%' || #{keyword} || '%'
         </if>
     </select>
 
@@ -198,17 +194,17 @@
         FROM board
         WHERE category_no = 2
         <if test="type == 'title'">
-            AND title LIKE '%' || #{keyword} || '%'
+            AND board_title LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'content'">
-            AND content LIKE '%' || #{keyword} || '%'
+            AND board_content LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'writer'">
             AND writer LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'titleContent'">
-            AND title LIKE '%' || #{keyword} || '%'
-            OR content LIKE '%' || #{keyword} || '%'
+            AND board_title LIKE '%' || #{keyword} || '%'
+            OR board_content LIKE '%' || #{keyword} || '%'
         </if>
     </select>
 
@@ -217,17 +213,17 @@
         FROM board
         WHERE category_no = 3
         <if test="type == 'title'">
-            AND title LIKE '%' || #{keyword} || '%'
+            AND board_title LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'content'">
-            AND content LIKE '%' || #{keyword} || '%'
+            AND board_content LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'writer'">
             AND writer LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'titleContent'">
-            AND title LIKE '%' || #{keyword} || '%'
-            OR content LIKE '%' || #{keyword} || '%'
+            AND board_title LIKE '%' || #{keyword} || '%'
+            OR board_content LIKE '%' || #{keyword} || '%'
         </if>
     </select>
 
@@ -244,7 +240,7 @@
         (seq_board.nextval, #{boardNo}, #{boardTitle}, #{boardContent}, #{categoryNo})
     </insert>
 
-    <!--   #############################  board_no 게시글 등록시 1씩 상승해야한다.   -->
+    <!--   #############################  board_no 게시글 등록시 1씩 상승해야한다. 추후에 수정 필요   -->
     <update id="upBoardNo">
         update board
         set board_no = board_no ++

@@ -25,7 +25,7 @@
 </header>
 
 <!-- 항상 맨 위에 고정되도록 z인덱스 부여 -->
-<style type="text/css">
+<!-- <style type="text/css">
 header {
     z-index: 50000;
 
@@ -33,10 +33,10 @@ header {
     background-color: #fff;
     border-bottom: 1px solid rgb(230, 230, 230);
 }
-</style>
+</style> -->
 
 <!-- 헤더 스크롤 내려도 고정되도록 하는 함수 -->
-<script type="text/javascript"> 
+<!-- <script type="text/javascript"> 
 
     // offsetTop 속성을 통해 부모로부터 얼마나 멀리 떨어져있는지 픽셀단위로 설정.
     // offsetLeft: 브라우저 좌측으로부터 얼마나 떨어져 있는지 알 수 있다.
@@ -60,5 +60,5 @@ header {
         }
     });
 
- </script> 
+ </script>  -->
 
