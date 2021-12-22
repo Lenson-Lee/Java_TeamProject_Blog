@@ -58,15 +58,13 @@
                 <div class="row">
                     <div class="blog-post-area-style">
 
+                         <!-- #################################### 검색창 영역 #################################### -->
                         <form action="/board/movie-list" id="search-form">
-
                             <input type="hidden" name="amount" value="${maker.page.amount}">
 
                             <div class="row">
                                 <div class="col-xs-6 col-md-4">
                                     <div class="input-group">
-                                        
-                                        
                                         <!-- 선택창 -->
                                         <select name="type">
                                             <option value="title" ${maker.page.type=='title' ? 'selected' : '' }>제목</option>
@@ -93,28 +91,7 @@
                             </div>
                         </form>
 
-                        <!-- #################################### 검색창 영역 #################################### -->
-                        <!-- <div class="search">
-                            <form action="/board/movie-list" id="search-form">
-
-                                <input type="hidden" name="amount" value="${maker.page.amount}">
-
-                                <select name="type">
-                                    <option value="title" ${maker.page.type=='title' ? 'selected' : '' }>제목</option>
-                                    <option value="content" ${maker.page.type=='content' ? 'selected' : '' }>내용</option>
-                                    
-                                    <option value="titleContent" ${maker.page.type=='titleContent' ? 'selected' : '' }>
-                                        제목+내용
-                                    </option>
-                                </select>
-
-                                <input type="text" name="keyword" placeholder="검색어를 입력!" value="${maker.page.keyword}">
-
-                                <button type="submit">검색</button>
-
-                            </form>
-                        </div> -->
-
+                    
                         <!-- #################################### 최신글 코드  ####################################### -->
                         <div class="single-post">
                             <h3>
