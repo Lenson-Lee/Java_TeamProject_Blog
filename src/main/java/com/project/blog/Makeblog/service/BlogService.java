@@ -15,6 +15,23 @@ public class BlogService {
 
     private final BlogMapper blogMapper;
 
+    // ##################### 최신글 목록 가져오기 #####################
+    public List<Blog> getMovieRecentArticle() {
+        List<Blog> recent = blogMapper.getMovieRecentArticle();
+        //게시글 제목 ...붙이기
+        for (Blog article : recent) {
+            String title = article.getBoardTitle();
+            if (title.length() > 12)
+                article.setBoardTitle(title.substring(0, 12) + "...");
+        }
+        //게시글 내용 ...붙이기
+        for (Blog article : recent) {
+            String content = article.getBoardContent();
+            if (content.length() > 50)
+                article.setBoardContent(content.substring(0, 50) + "...");
+        }
+        return recent;
+    }
     // ##################### 인기글 목록 가져오기 #####################
     public List<Blog> getMovieBestArticle() {
         List<Blog> best = blogMapper.getMovieBestArticle();
@@ -33,6 +50,7 @@ public class BlogService {
         }
         return best;
     }
+
     public List<Blog> getRestaurantBestArticle() {
         List<Blog> best = blogMapper.getRestaurantBestArticle();
 
@@ -50,6 +68,7 @@ public class BlogService {
         }
         return best;
     }
+
     public List<Blog> getDailyBestArticle() {
         List<Blog> best = blogMapper.getDailyBestArticle();
 
@@ -146,7 +165,7 @@ public class BlogService {
             if (content.length() > 50)
                 article.setBoardContent(content.substring(0, 50) + "...");
         }
-            //3분 이내 신규글 new마크 붙이기
+        //3분 이내 신규글 new마크 붙이기
         for (Blog article : articles) {
             //각 게시물들의 등록시간 읽어오기(밀리초)
             long regTime = article.getBoardDate().getTime();
@@ -178,12 +197,15 @@ public class BlogService {
     public int getCount(Page page) {
         return blogMapper.getTotalCount(page);
     }
+
     public int getMovieCount(Page page) {
         return blogMapper.getMovieTotalCount(page);
     }
+
     public int getRestaurantCount(Page page) {
         return blogMapper.getRestaurantTotalCount(page);
     }
+
     public int getDailyCount(Page page) {
         return blogMapper.getDailyTotalCount(page);
     }

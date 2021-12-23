@@ -35,13 +35,27 @@
         ORDER BY board_view_cnt DESC
     </select>
 
+    <!-- #################### 카테고리별 최신글 띄우기 ####################   -->
+    <select id="getMovieRecentArticle" resultMap="boardMap">
+        SELECT * FROM board
+        WHERE category_no = 1
+        ORDER BY serial_no DESC
+    </select>
 
-    <!--  #################### 카테고리별 최신글 띄우기 #################### -->
-    <!--    원본-->
-    <!--    SELECT * FROM board-->
-    <!--    WHERE category_no = 1-->
-    <!--    ORDER BY serial_no DESC-->
+    <select id="getRestaurantRecentArticle" resultMap="boardMap">
+        SELECT * FROM board
+        WHERE category_no = 2
+        ORDER BY serial_no DESC
+    </select>
 
+    <select id="getDailyRecentArticle" resultMap="boardMap">
+        SELECT * FROM board
+        WHERE category_no = 3
+        ORDER BY serial_no DESC
+    </select>
+
+
+    <!--  #################### 카테고리별 게시판 조회 #################### -->
     <select id="getMovieArticles" resultMap="boardMap">
         <![CDATA[
         SELECT
@@ -134,16 +148,16 @@
                 FROM board
                 WHERE rownum <= 10
                     ]]>
-            <if test="type == 'title'">
-                AND board_title LIKE '%'|| #{keyword} || '%'
-            </if>
-            <if test="type == 'content'">
-                AND board_content LIKE '%'|| #{keyword} || '%'
-            </if>
-            <if test="type == 'titleContent'">
-                AND board_title LIKE '%'|| #{keyword} || '%'
-                OR board_content LIKE '%'|| #{keyword} || '%'
-            </if>
+        <if test="type == 'title'">
+            AND board_title LIKE '%'|| #{keyword} || '%'
+        </if>
+        <if test="type == 'content'">
+            AND board_content LIKE '%'|| #{keyword} || '%'
+        </if>
+        <if test="type == 'titleContent'">
+            AND board_title LIKE '%'|| #{keyword} || '%'
+            OR board_content LIKE '%'|| #{keyword} || '%'
+        </if>
         <![CDATA[
                 AND rownum <= #{pageNum} * #{amount}
 

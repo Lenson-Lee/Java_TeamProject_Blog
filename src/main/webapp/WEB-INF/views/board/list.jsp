@@ -103,16 +103,16 @@
                             <div class="single-post">
                                 <img src="../../img/post-image3.jpg" alt="">
                                 <h3><a
-                                        href="single?serialNo=${article[0].serialNo}&categoryNo=${article[0].categoryNo}">${article[0].boardTitle}</a>
+                                        href="single?serialNo=${recentArticles[0].serialNo}&categoryNo=${recentArticles[0].categoryNo}">${recentArticles[0].boardTitle}</a>
                                 </h3>
 
                                 <!-- 게시글 내용 -->
                                 <!-- <p>${article[0].boardContent}</p> -->
                                 <h4>
                                     <span>
-                                        <fmt:formatDate value="${article[0].boardDate}"
+                                        <fmt:formatDate value="${recentArticles[0].boardDate}"
                                             pattern="yyyy-MM-dd a hh:mm:ss" /> <br>
-                                        <p>조회수: ${article[0].boardViewCnt}</p>
+                                        <p>조회수: ${recentArticles[0].boardViewCnt}</p>
                                     </span>
                                 </h4>
                             </div>
@@ -122,15 +122,15 @@
                             <div class="single-post">
                                 <img src="../../img/post-image3.jpg" alt="">
                                 <h3><a
-                                        href="single?serialNo=${article[1].serialNo}&categoryNo=${article[1].categoryNo}">${article[1].boardTitle}</a>
+                                        href="single?serialNo=${recentArticles[1].serialNo}&categoryNo=${recentArticles[1].categoryNo}">${recentArticles[1].boardTitle}</a>
                                 </h3>
                                 <!-- 게시글 내용 -->
                                 <!-- <p>${article[1].boardContent}</p> -->
                                 <h4>
                                     <span>
-                                        <fmt:formatDate value="${article[1].boardDate}"
+                                        <fmt:formatDate value="${recentArticles[1].boardDate}"
                                             pattern="yyyy-MM-dd a hh:mm:ss" /> <br>
-                                        <p>조회수: ${article[1].boardViewCnt}</p>
+                                        <p>조회수: ${recentArticles[1].boardViewCnt}</p>
                                     </span>
                                 </h4>
                             </div>
@@ -139,15 +139,15 @@
                             <div class="single-post">
                                 <img src="../../img/post-image4.jpg" alt="">
                                 <h3><a
-                                        href="single?serialNo=${article[2].serialNo}&categoryNo=${article[2].categoryNo}">${article[2].boardTitle}</a>
+                                        href="single?serialNo=${recentArticles[2].serialNo}&categoryNo=${recentArticles[2].categoryNo}">${recentArticles[2].boardTitle}</a>
                                 </h3>
                                 <!-- 게시글 내용 -->
                                 <!-- <p>${article[2].boardContent}</p> -->
                                 <h4>
                                     <span>
-                                        <fmt:formatDate value="${article[2].boardDate}"
+                                        <fmt:formatDate value="${recentArticles[2].boardDate}"
                                             pattern="yyyy-MM-dd a hh:mm:ss" /> <br>
-                                        <p>조회수: ${article[2].boardViewCnt}</p>
+                                        <p>조회수: ${recentArticles[2].boardViewCnt}</p>
                                     </span>
                                 </h4>
                             </div>
@@ -156,15 +156,15 @@
                             <div class="single-post">
                                 <img src="../../img/post-image5.jpg" alt="">
                                 <h3><a
-                                        href="single?serialNo=${article[3].serialNo}&categoryNo=${article[3].categoryNo}">${article[3].boardTitle}</a>
+                                        href="single?serialNo=${recentArticles[3].serialNo}&categoryNo=${recentArticles[3].categoryNo}">${recentArticles[3].boardTitle}</a>
                                 </h3>
                                 <!-- 게시글 내용 -->
                                 <!-- <p>${article[3].boardContent}</p> -->
                                 <h4>
                                     <span>
-                                        <fmt:formatDate value="${article[3].boardDate}"
+                                        <fmt:formatDate value="${recentArticles[3].boardDate}"
                                             pattern="yyyy-MM-dd a hh:mm:ss" /> <br>
-                                        <p>조회수: ${article[3].boardViewCnt}</p>
+                                        <p>조회수: ${recentArticles[3].boardViewCnt}</p>
                                     </span>
                                 </h4>
                             </div>

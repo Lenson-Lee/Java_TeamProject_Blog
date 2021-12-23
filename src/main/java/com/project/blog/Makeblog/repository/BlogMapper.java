@@ -60,7 +60,12 @@ public interface BlogMapper {
     int upBoardNo(int serialNo);
 
 
-    //7. 각 카테고리에 인기 게시물 등록
+    //7. 각 카테고리 최신 게시글 조회
+    List<Blog> getMovieRecentArticle();
+    List<Blog> getRestaurantRecentArticle();
+    List<Blog> getDailyRecentArticle();
+
+    //7-2. 각 카테고리에 인기 게시물 조회
     List<Blog> getMovieBestArticle();
     List<Blog> getRestaurantBestArticle();
     List<Blog> getDailyBestArticle();

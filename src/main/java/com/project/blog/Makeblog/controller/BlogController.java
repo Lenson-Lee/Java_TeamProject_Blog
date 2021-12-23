@@ -141,6 +141,8 @@ public class BlogController {
         model.addAttribute("maker",
                 new PageMaker(page, blogService.getMovieCount(page)));
 
+        List<Blog> recentArticles = blogService.getMovieRecentArticle();
+        model.addAttribute("recentArticles", recentArticles);
 
         List<Blog> bestArticles = blogService.getMovieBestArticle();
         model.addAttribute("bestArticles", bestArticles);
