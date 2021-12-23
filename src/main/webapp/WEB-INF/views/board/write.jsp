@@ -22,9 +22,13 @@
 
     <%@ include file="../include/header.jsp" %>
 
-    <style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/active.js"></script>
 
-    </style>
+    <!-- 위지윅 에디터 ckeditor.com/ textarea 태그에서 활성화 가능해진다. -->
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 </head>
 
 <body>
@@ -38,20 +42,26 @@
 
             <div class="inputmenu">
 
-                <form action="/board/write" method="post">
+                <!-- 이미지 추가를 위해서는 encType 작성이 필요함 -->
+                <form action="/board/write" method="post" enctype="multipart/form-data">
+
                     카테고리: <input type="radio" name="categoryNo" value="1" checked="checked">영화
                     <input type="radio" name="categoryNo" value="2"> 맛집
                     <input type="radio" name="categoryNo" value="3"> 일상 <br>
 
                     <input id="title" type="text" class="input" name="boardTitle" placeholder="제목을 입력하세요."><br>
                     <br>
-                    <textarea id="textArea" rows="60" class="input" cols="40" name="boardContent"
-                        placeholder="내용을 입력하세요."></textarea><br>
 
-                        
+                    <!-- 텍스트 에디터 -->
+                    <textarea id="textArea-edit" class="input" name="boardContent">
+                    </textarea>
+                    <!-- <textarea id="textArea-edit" rows="60" class="input" cols="40" name="boardContent"></textarea> -->
+                    <br>
+
+                    <!-- 이미지 추가 기능 -->
+                    <input type="file" name="fileName">
 
                     <button type="submit">등록</button>
-                    
 
                 </form>
 
@@ -62,15 +72,18 @@
 
         </section>
 
-        
+
         <%@ include file="../include/footer.jsp" %>
 
 
     </div>
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/active.js"></script>
+    
+
+    <script>
+        /* 위지윅 적용 */
+        /* 에디터 활성화 name 적기 */
+        CKEDITOR.replace( 'boardContent' );
+    </script>
 </body>
 
 </html>

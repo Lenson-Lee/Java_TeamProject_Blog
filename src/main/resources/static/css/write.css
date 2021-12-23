@@ -3,8 +3,6 @@
     margin-bottom: 80px;
     width: 100%;
     height: auto;
-    border-top: 1px solid #000;
-
 }
 
 .write h1 {
@@ -64,10 +62,14 @@
     padding: 10px 30px;
 }
 
-#textArea {
+/* #textArea {
     padding: 35px 50px;
-}
+} */
 
+/* ############# ckeditor 높이 ############# */
+.ck-content {						
+    height: 30em;
+}
 
 .inputmenu button,
 .write #boardlist {

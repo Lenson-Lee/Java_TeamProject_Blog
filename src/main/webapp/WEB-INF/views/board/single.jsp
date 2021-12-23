@@ -96,7 +96,7 @@
 
 <body>
     <div class="wrapper">
-        
+
         <%@ include file="../include/static-category.jsp" %>
 
         <section class="single-blog-area">
@@ -157,9 +157,9 @@
                                                             href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
                                                             style="text-decoration: none;">글
                                                             수정하기</a>
-                                                        <a data-serial-no="${article.serialNo}" data-category-no="${article.categoryNo}"
-                                                        id="del-btn" href=""
-                                                            style="text-decoration: none;">삭제</a>
+                                                        <a data-serial-no="${article.serialNo}"
+                                                            data-category-no="${article.categoryNo}" id="del-btn"
+                                                            href="" style="text-decoration: none;">삭제</a>
                                                     </div>
 
                                                 </div>
@@ -179,7 +179,7 @@
 
                                         <script>
                                             //삭제 버튼 클릭 이벤트
-                                            
+
                                             const btn = document.getElementById('del-btn');
                                             btn.addEventListener('click', D => {
 
@@ -190,8 +190,9 @@
                                                 const categoryNo = D.target.dataset.categoryNo;
                                                 console.log(serialNo);
                                                 console.log(categoryNo);
-                                                
-                                                location.href = '/board/delete?serialNo=' + serialNo + '&categoryNo=' + categoryNo;
+
+                                                location.href = '/board/delete?serialNo=' + serialNo +
+                                                    '&categoryNo=' + categoryNo;
                                             });
 
                                             //텍스트 길이에 맞게 높이 설정
@@ -199,10 +200,15 @@
                                                 obj.style.height = "1px";
                                                 obj.style.height = (12 + obj.scrollHeight) + "px";
                                             }
-                                            
                                         </script>
-
-
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 </body>
 
 </html>
