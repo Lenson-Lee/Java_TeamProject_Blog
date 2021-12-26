@@ -860,7 +860,10 @@ section.blog-post-area h4 span.author-name {
     background: #448aff;
     color: #fff;
 }
-
+.blog-post-area-style .list-container .amount .active{
+    background: #448aff;
+    color: #fff;
+}
 
 /* #################### 검색기능 ####################*/
 #search-form .row {

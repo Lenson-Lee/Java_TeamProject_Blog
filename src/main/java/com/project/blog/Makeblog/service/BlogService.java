@@ -93,7 +93,7 @@ public class BlogService {
 //        List<Blog> articles = blogMapper.getMovieArticles(page);
 
         //1-3. 최종 검색기능 추가한 서비스
-        List<Blog> articles = blogMapper.getSearchArticles(page);
+        List<Blog> articles = blogMapper.getMovieArticles(page);
 
         //게시글 제목 ...붙이기
         for (Blog article : articles) {

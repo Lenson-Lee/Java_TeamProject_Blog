@@ -17,34 +17,6 @@
 
 
 
-    <style>
-        .writing a {
-            display: inline-block;
-            /* background: #40c4ff; */
-            background: #87c9ff;
-
-            width: 95px;
-            height: 95px;
-            line-height: normal;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            text-align: center;
-            position: fixed;
-            right: 5%;
-            bottom: 10%;
-            z-index: 1000;
-        }
-
-        .writing a i {
-            font-size: 30px;
-            line-height: 95px;
-        }
-
-        .writing a:hover {
-            background: #66baff;
-        }
-    </style>
 
 </head>
 
@@ -58,7 +30,7 @@
                 <div class="row">
                     <div class="blog-post-area-style">
 
-                         <!-- #################################### 검색창 영역 #################################### -->
+                        <!-- #################################### 검색창 영역 #################################### -->
                         <form action="/board/movie-list" id="search-form">
                             <input type="hidden" name="amount" value="${maker.page.amount}">
 
@@ -67,10 +39,13 @@
                                     <div class="input-group">
                                         <!-- 선택창 -->
                                         <select name="type">
-                                            <option value="title" ${maker.page.type=='title' ? 'selected' : '' }>제목</option>
-                                            <option value="content" ${maker.page.type=='content' ? 'selected' : '' }>내용</option>
+                                            <option value="title" ${maker.page.type=='title' ? 'selected' : '' }>제목
+                                            </option>
+                                            <option value="content" ${maker.page.type=='content' ? 'selected' : '' }>내용
+                                            </option>
                                             <!-- <option value="writer" ${maker.page.type == 'writer' ? 'selected' : ''}>작성자</option> -->
-                                            <option value="titleContent" ${maker.page.type=='titleContent' ? 'selected' : '' }>
+                                            <option value="titleContent" ${maker.page.type=='titleContent' ? 'selected'
+                                                : '' }>
                                                 제목+내용
                                             </option>
                                         </select>
@@ -91,7 +66,7 @@
                             </div>
                         </form>
 
-                    
+
                         <!-- #################################### 최신글 코드  ####################################### -->
                         <div class="single-post">
                             <h3>
@@ -265,21 +240,20 @@
 
                             <div class="amount-box">
                                 <div class="amount">
-                                    <a
-                                        href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
-                                    <a
-                                        href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
-                                    <a
-                                        href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
-                                </div>
+                                        <a href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
+                                   
+                                        <a href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
+                                    
+                                        <a href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
+                               </div>
                             </div>
 
                             <table border="1" id="list-table" class="table table-sm" width="100%">
 
                                 <tr>
-                                    <th>boardNo</th>
-                                    <th>seiralNo</th>
-                                    <th>신규글 여부</th>
+                                    <!-- <th>boardNo</th> -->
+                                    <th>글번호</th>
+                                    <!-- <th>신규글 여부</th> -->
                                     <th width="50%">제목</th>
                                     <th>작성시간</th>
                                     <th>조회수</th>
@@ -291,9 +265,9 @@
                                     하고, var가 article 이면 변수명이 겹쳐서 500 오류가 된다. -->
                                 <c:forEach var="a" items="${article}">
                                     <tr class="table-hover">
-                                        <td>${a.boardNo}</td>
+                                        <!-- <td>${a.boardNo}</td> -->
                                         <td>${a.serialNo}</td>
-                                        <td>${a.newFlag}</td>
+                                        <!-- <td>${a.newFlag}</td> -->
                                         <td>
                                             <a
                                                 href="/board/single?serialNo=${a.serialNo}&categoryNo=${a.categoryNo}">${a.boardTitle}</a>

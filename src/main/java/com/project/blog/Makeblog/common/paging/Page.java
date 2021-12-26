@@ -13,7 +13,7 @@ public class Page {
     private String type; //검색조건
     private String keyword = ""; //검색어
 
-    //(아마도) 현재 1페이지에 페이지당 게시물 10개로 설정하는 코드로 추측
+    //(아마도 기본값 설정같다.) 현재 1페이지에 페이지당 게시물 10개로 설정하는 코드로 추측
     public Page() {
         this(1, 10);
     }

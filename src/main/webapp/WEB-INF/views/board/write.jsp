@@ -28,6 +28,7 @@
     <script src="js/active.js"></script>
 
     <!-- 위지윅 에디터 ckeditor.com/ textarea 태그에서 활성화 가능해진다. -->
+    <!-- 버전 문제같은데 5가 안되어서 4 썼습니다. -->
     <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 </head>
 
@@ -38,7 +39,7 @@
 
         <section class="write">
 
-            <h1>BLOG 게시글 등록</h1>
+            <h1>게시글 등록</h1>
 
             <div class="inputmenu">
 

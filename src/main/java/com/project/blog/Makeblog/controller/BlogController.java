@@ -45,6 +45,13 @@ public class BlogController {
         model.addAttribute("article", content);
         model.addAttribute("articles", viewCount);
 
+        if (categoryNo == 1) {
+            model.addAttribute("flag", "movie");
+        } else if (categoryNo == 2) {
+            model.addAttribute("flag", "res");
+        } else {
+            model.addAttribute("flag", "day");
+        }
         return "board/single";
     }
 
@@ -148,6 +155,7 @@ public class BlogController {
         model.addAttribute("bestArticles", bestArticles);
         log.info(blog.getSerialNo());
 
+        // 플래그를 통해 상단 카테고리 창 색상 고정
         model.addAttribute("flag", "movie");
 
         return "board/list";

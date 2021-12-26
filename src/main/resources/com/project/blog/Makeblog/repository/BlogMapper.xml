@@ -61,11 +61,13 @@
         SELECT
         serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
         FROM
-        (SELECT  /*+INDEX_DESC(board sys_c007043)*/
+        (
+        SELECT  /*+INDEX_DESC(board sys_c007043)*/
         rownum rn, serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
         FROM board
         WHERE rownum <= #{pageNum} * #{amount}
-        AND category_no = 1 )
+        AND category_no = 1
+        )
         WHERE rn > (#{pageNum} - 1) * #{amount}
         ]]>
 
@@ -146,7 +148,7 @@
                 SELECT  /*+INDEX_DESC(board sys_c007043)*/
                 rownum rn, serial_no, board_no, board_title, board_content, board_view_cnt, board_date, category_no
                 FROM board
-                WHERE rownum <= 10
+                WHERE rownum <= #{pageNum} * #{amount}
                     ]]>
         <if test="type == 'title'">
             AND board_title LIKE '%'|| #{keyword} || '%'
@@ -159,8 +161,7 @@
             OR board_content LIKE '%'|| #{keyword} || '%'
         </if>
         <![CDATA[
-                AND rownum <= #{pageNum} * #{amount}
-
+                AND category_no = 1
                 )
             WHERE rn > (#{pageNum} - 1) * #{amount}
         ]]>
