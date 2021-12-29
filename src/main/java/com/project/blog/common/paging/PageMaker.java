@@ -1,4 +1,4 @@
-package com.project.blog.Makeblog.common.paging;
+package com.project.blog.common.paging;
 
 
 import lombok.Getter;

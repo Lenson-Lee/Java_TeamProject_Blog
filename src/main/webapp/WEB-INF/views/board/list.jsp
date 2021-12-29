@@ -240,20 +240,21 @@
 
                             <div class="amount-box">
                                 <div class="amount">
-                                        <a href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
-                                   
-                                        <a href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
-                                    
-                                        <a href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
-                               </div>
+                                    <a data-amount="10"
+                                        href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
+
+                                    <a data-amount="20"
+                                        href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
+
+                                    <a data-amount="30"
+                                        href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
+                                </div>
                             </div>
 
                             <table border="1" id="list-table" class="table table-sm" width="100%">
 
                                 <tr>
-                                    <!-- <th>boardNo</th> -->
                                     <th>글번호</th>
-                                    <!-- <th>신규글 여부</th> -->
                                     <th width="50%">제목</th>
                                     <th>작성시간</th>
                                     <th>조회수</th>
@@ -265,9 +266,7 @@
                                     하고, var가 article 이면 변수명이 겹쳐서 500 오류가 된다. -->
                                 <c:forEach var="a" items="${article}">
                                     <tr class="table-hover">
-                                        <!-- <td>${a.boardNo}</td> -->
                                         <td>${a.serialNo}</td>
-                                        <!-- <td>${a.newFlag}</td> -->
                                         <td>
                                             <a
                                                 href="/board/single?serialNo=${a.serialNo}&categoryNo=${a.categoryNo}">${a.boardTitle}</a>
@@ -374,6 +373,22 @@
                 }
             }
         }
+
+        // //amount 클릭시 색상변경 이벤트
+        // const $parent = document.querySelector('.amount');
+        // console.log($parent);
+        // const $target = $parent.querySelector('a');
+        // console.log($target);
+
+        // $parent.addEventListener('click', e => {
+            
+        //     e.preventDefault();
+
+        //     e.classList.add("active");
+
+        //     console.log(e);
+        // })
+
 
         //메인 실행부   (common.PageMaker가 알고있다.)
         (function () {

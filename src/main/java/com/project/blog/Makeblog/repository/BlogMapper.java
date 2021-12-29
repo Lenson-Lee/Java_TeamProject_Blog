@@ -1,6 +1,6 @@
 package com.project.blog.Makeblog.repository;
 
-import com.project.blog.Makeblog.common.paging.Page;
+import com.project.blog.common.paging.Page;
 import com.project.blog.Makeblog.domain.Blog;
 import org.apache.ibatis.annotations.Mapper;
 

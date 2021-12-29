@@ -59,8 +59,8 @@
                     <!-- <textarea id="textArea-edit" rows="60" class="input" cols="40" name="boardContent"></textarea> -->
                     <br>
 
-                    <!-- 이미지 추가 기능 -->
-                    <input type="file" name="fileName">
+                    <!-- 이미지 추가 기능 -> 위지윅에서 해결...(?) -->
+                    <!-- <input type="file" name="fileName"> -->
 
                     <button type="submit">등록</button>
 
@@ -78,12 +78,14 @@
 
 
     </div>
-    
+
 
     <script>
-        /* 위지윅 적용 */
+      
+      /* 위지윅 적용 */
         /* 에디터 활성화 name 적기 */
-        CKEDITOR.replace( 'boardContent' );
+        CKEDITOR.replace('boardContent');
+
     </script>
 </body>
 

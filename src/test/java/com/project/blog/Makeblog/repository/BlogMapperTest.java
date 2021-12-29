@@ -1,6 +1,6 @@
 package com.project.blog.Makeblog.repository;
 
-import com.project.blog.Makeblog.common.paging.Page;
+import com.project.blog.common.paging.Page;
 import com.project.blog.Makeblog.domain.Blog;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -11,8 +11,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class BlogMapperTest {

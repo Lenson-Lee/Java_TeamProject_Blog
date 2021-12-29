@@ -1,8 +1,8 @@
 package com.project.blog.Makeblog.controller;
 
 
-import com.project.blog.Makeblog.common.paging.Page;
-import com.project.blog.Makeblog.common.paging.PageMaker;
+import com.project.blog.common.paging.Page;
+import com.project.blog.common.paging.PageMaker;
 import com.project.blog.Makeblog.domain.Blog;
 import com.project.blog.Makeblog.service.BlogService;
 import lombok.RequiredArgsConstructor;
