@@ -20,9 +20,9 @@ class ReplyMapperTest {
     ReplyMapper replyMapper;
 
     @Test
-    @DisplayName("특정 글번호 게시글에 댓글 3개 삽입.")
+    @DisplayName("특정 글번호 게시글에 댓글 10개 삽입.")
     void insertTest() {
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i <= 10; i++) {
             Reply reply = new Reply();
             reply.setBoardNo(501);
             reply.setReplyText("테스트" + i);
@@ -35,12 +35,12 @@ class ReplyMapperTest {
     @Test
     @DisplayName("특정 게시물을 수정할 수 있어야 한다.")
     void updateTest() {
-//        Reply reply = replyMapper.read(1);
-//        reply.setReplyText("수정된 댓글");
-//
-//        replyMapper.update(reply);
-//
-//        assertEquals(reply.getReplyText(), replyMapper.read(1).getReplyText());
+        Reply reply = replyMapper.read(1);
+        reply.setReplyText("수정된 댓글");
+
+        replyMapper.update(reply);
+
+        assertEquals(reply.getReplyText(), replyMapper.read(1).getReplyText());
     }
 
     @Test
@@ -51,7 +51,7 @@ class ReplyMapperTest {
         for (Reply reply : list) {
             System.out.println(reply);
         }
-        assertEquals(3, list.size());
+        assertEquals(10, list.size());
     }
 
     @Test
@@ -63,7 +63,7 @@ class ReplyMapperTest {
         replyMapper.delete(2);
 
 //        501번 게시글의 댓글 갯수가 1개가 남았다는 뜻
-        assertTrue(replyMapper.getList(501, new Page(1, 10)).size() == 1);
+        assertTrue(replyMapper.getList(501, new Page(1, 10)).size() == 8);
 
     }
 
