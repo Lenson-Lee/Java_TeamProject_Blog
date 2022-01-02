@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        # 댓글 작성자: <input type="text" name="author">
+        <br>
+        # 댓글 내용: <textarea name="content" cols="20" rows="5"></textarea>
+
+        <br>
+        <button id="reg" type="button">확인</button>
+    </div>
+
+    <script>
+        const $btn = document.querySelector('#reg');
+        $btn.addEventListener('click', e => {
+
+            const reply = {
+                boardNo: 312,
+                replyText: document.querySelector('textarea[name=content]').value,
+                replyWriter: document.querySelector('input[name=author]').value
+            }
+
+            //GET을 제외한 다른 요청방법들은 요청 정보 객체를 추가로 fetch함수에 전달해야 함.
+            const reqInfo = {
+                method: 'POST', //요청 방식(GET은 디폴트라 따로 안적어도 된다.)
+                //서버에 데이터를 보낼 때는 전송데이터에 따라 헤더정보 설정
+                headers: {
+                    'content-type': 'application/json'
+                },
+                //reqInfo 객체의 body프로퍼티에는 서버로 전송할 JSON데이터를 넣어야 함.
+                //근데 이건 자바스크립트 객체여서 이따 변환해줘야 한다 => JSON.stringify()
+                //자바스크립트객체를 JSON으로 변환해야 한다.
+                //JSON.stringify : js => JSON
+                //JSON.parse     : JSON => js
+                body: JSON.stringify(reply)
+
+            };
+
+            //비동기 요청 ajax = fetch, requestInfo
+            fetch('http://localhost:8183/api/reply', reqInfo)
+                .then(res => res.text())
+                .then(msg => {
+                    if (msg === 'insertSuccess') {
+                        alert('댓글 등록 성공!');
+                    } else {
+                        alert('댓글 등록 실패!');
+                    }
+                });
+
+            // 완성 후 api서버랑 라이브서버 둘 다 돌려서 라이브서버에서 댓글 입력해보고
+            // 성공하면 sql에서 확인해보기 
+            // SELECT*FROM tbl_reply
+            // WHERE board_no = 312;
+        });
+    </script>
+</body>
+
+</html>
