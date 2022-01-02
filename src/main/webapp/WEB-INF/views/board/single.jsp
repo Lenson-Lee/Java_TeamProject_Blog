@@ -215,7 +215,7 @@
                                                         <!-- 댓글 내용 바디 -->
                                                         <div id="replyCollapse" class="card">
                                                             <div id="replyData">
-                                                                <!-- JS로 댓글 정보 DIV삽입 -->
+                                                                <!-- JS로 댓글 정보 DIV삽입 - 437번줄 -->
                                                             </div>
 
                                                             <!-- 댓글 페이징 영역 -->
@@ -281,7 +281,10 @@
             </div>
     </div>
     </section>
-    <script src="js/jquery-3.1.1.min.js"></script>
+    
+    <!-- 제이쿼리는 include.header.jsp에 넣어두었습니다.
+    <script src="js/jquery-3.1.1.min.js"></script> -->
+    
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/isotope.pkgd.js"></script>
@@ -289,7 +292,6 @@
 
     <script>
         //삭제 버튼 클릭 이벤트
-
         const btn = document.getElementById('del-btn');
         btn.addEventListener('click', D => {
 
@@ -331,7 +333,8 @@
             function formatDate(datetime) {
                 //문자열 날짜 데이터를 날짜객체로 변환
                 const dateObj = new Date(datetime);
-                // console.log(dateObj);
+                console.log("날짜 객체");
+                console.log(dateObj);
                 //날짜객체를 통해 각 날짜 정보 얻기
                 let year = dateObj.getFullYear();
 
@@ -445,7 +448,7 @@
             // 댓글 목록 비동기 요청 처리 함수
             function getReplyList(pageNum) {
                 //서버 내부 jsp여서 http 작성 안해도 된다. vscode 라이브는 바깥에서(5500번 포트) 접속이어서 주소가 그랬음.
-                fetch('/api/v1/reply/' + boardNo + '/' + pageNum)
+                fetch('/api/reply/' + boardNo + '/' + pageNum)
                     .then(res => res.json())
                     .then(replyMap => {
                         console.log(replyMap);
@@ -484,7 +487,7 @@
                         replyWriter: $('#newReplyWriter').val()
                     })
                 };
-                fetch('/api/v1/reply', reqInfo) //이 url로 reqInfo가 나간다
+                fetch('/api/reply', reqInfo) //이 url로 reqInfo가 나간다
                     .then(res => res.text())
                     .then(msg => {
                         if (msg === 'insertSuccess') {
@@ -543,7 +546,7 @@
                     })
                 }
                 //요청
-                fetch('/api/v1/reply/' + rno, reqInfo)
+                fetch('/api/reply/' + rno, reqInfo)
 
                     .then(res => res.text()) //그러면 요청텍스트가 온다
                     .then(msg => { //그러면 성공메시지/실패메시지 나온다
@@ -575,7 +578,7 @@
                 const reqInfo = {
                     method: 'DELETE' //작성안하면 Get요청으로 된다.
                 };
-                fetch('/api/v1/reply/' + replyId, reqInfo)
+                fetch('/api/reply/' + replyId, reqInfo)
                     .then(res => res.text())
                     .then(msg => {
                         if (msg === 'delSuccess') {

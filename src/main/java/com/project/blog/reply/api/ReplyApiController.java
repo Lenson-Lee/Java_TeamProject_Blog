@@ -34,7 +34,7 @@ public class ReplyApiController {
             //경로를통해 변수를 이용하겠다 @PathVariable
             @PathVariable int boardNo   //501번 게시글이 들어갔음
             , @PathVariable("page") int pageNum) {  //3, 페이지를 읽어서 페이지넘에 넣는다.
-        log.info("/api/v1/reply/" + boardNo + "GET!");
+        log.info("/api/reply/" + boardNo + "GET!");
 
         Page page = new Page(pageNum, 10);  //위의 요청페이지 넘이 여기 들어온다.
         Map<String, Object> replyList = replyService.getList(boardNo, page);
@@ -54,7 +54,7 @@ public class ReplyApiController {
     @PostMapping("")
     //@RequestBody: 클라이언트에서 전달한 JSON 데이터를 자바객체로 변환해준다.
     public ResponseEntity<String> create(@RequestBody Reply reply) {
-        log.info("/api/v1/reply POST! - public create");
+        log.info("/api/reply POST! - public create");
 
         //상항연산자를 통해 불린값 register 의 결과에 따라 반환이 다름
         return replyService.register(reply)
@@ -71,7 +71,7 @@ public class ReplyApiController {
 
         //읽은 replyNo 를 원본댓글번호에 넣어준다.
         reply.setReplyNo(replyNo);
-        log.info("/api/v1/reply" + replyNo + "PUT - " + reply);
+        log.info("/api/reply" + replyNo + "PUT - " + reply);
 
         //Http.Status.OK 같은거 static 데이터여서 상수선언하는거? 외부 데이터처럼 HttpStatus. 작성 말고 알트엔터 후 세번째 add all static~~ 사용하면 된다. 앞으로 클래스이름 안밝혀도 된다?
         //System.out.println() 도 앞에 있는 시스템을 적기 싫을 때 알트앤터 하면 모든 스테틱 메서드, 스테틱 필드를 system.을 생략하고 사용 가능
@@ -88,7 +88,7 @@ public class ReplyApiController {
     @DeleteMapping("/{rno}")
     public ResponseEntity<String> remove(@PathVariable("rno") int replyNo) {
         //제이슨을 보낼 건 없고 주소에 댓글번호 주소만 얹으면 된다.
-        log.info("/api/v1/reply/" + replyNo + "DELETE !!");
+        log.info("/api/reply/" + replyNo + "DELETE !!");
 
         return replyService.remove(replyNo)
                 ? new ResponseEntity<>("delSuccess", OK)
