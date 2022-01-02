@@ -277,19 +277,23 @@ section.blog-post-area h4 span.author-name {
 
 
 /* 페이지 숫자 */
-.blog-post-area .pagination {
+/* single 페이지의 댓글 페이징에서도 페이지를 사용하기 위해
+.blog-post-area .pagination 에서
+.blog-post-area 를 뺐다. */
+
+.pagination {
     margin-top: 60px;
     margin-bottom: 60px;
     display: block;
 }
 
-.blog-post-area .pagination .nav-links {
+.pagination .nav-links {
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
-.blog-post-area .pagination .nav-links .page-numbers {
+.pagination .nav-links .page-numbers {
     border: 1px solid #448aff;
     border-radius: 50%;
     color: #448aff;
@@ -314,15 +318,17 @@ section.blog-post-area h4 span.author-name {
     color: #fff;
 }
 
-.blog-post-area .pagination .nav-links .page-numbers:hover {
+.pagination .nav-links .page-numbers:hover {
     background: #448aff;
     color: #fff;
 }
 
-.blog-post-area .pagination .nav-links a {
+.pagination .nav-links a {
     text-decoration: none;
 }
 
+
+/* 푸터 */
 .wrapper footer.footer {
     height: 80px;
 }
@@ -514,6 +520,21 @@ section.blog-post-area h4 span.author-name {
     width: 100%;
 }
 
+/* 댓글 css */
+.card .float-left {
+    background: #87c9ff;
+    color: #fff;
+    padding: 5px 20px;
+}
+
+.card {
+    padding: 10px 20px;
+}
+.card-body {
+    margin: 10px 10px 20px 10px;
+    padding: 0 0 10px 0;
+    border-bottom: solid 1px #999;
+}
 
 /*comment part start*/
 

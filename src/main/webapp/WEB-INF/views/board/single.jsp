@@ -10,18 +10,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Single page</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-
 
     <%@ include file="../include/header.jsp" %>
 
@@ -124,7 +115,6 @@
                                                             </ul>
                                                         </div>
 
-
                                                         <p>
                                                             <pre class="content">${article.boardContent}</pre>
                                                         </p>
@@ -171,7 +161,7 @@
                                             <!-- ############################## 댓글 영역 ############################## -->
                                             <!-- ###################################################################### -->
 
-                                            <div id="replies" class="row">
+                                            <div id="replies" class="row table">
                                                 <div class="offset-md-1 col-md-10">
                                                     <!-- 댓글 쓰기 영역 -->
                                                     <div class="card">
@@ -378,25 +368,29 @@
                 const begin = pageInfo.beginPage;
                 const end = pageInfo.endPage;
 
+                tag += "<div class='nav-links'>"
+
                 //이전 버튼 만들기
                 if (pageInfo.prev) {
-                    tag += "<li class='page-item'><a class='page-link page-active' href='" + (begin - 1) +
-                        "'>이전</a></li>";
+                    tag += "<li class='page-item page-numbers'><a class='page-link page-active' href='" + (begin - 1) +
+                        "'>prev</a></li>";
                 }
 
                 //페이지 번호 리스트 만들기
                 for (let i = begin; i <= end; i++) {
                     const active = (pageInfo.page.pageNum === i) ? 'p-active' : '';
-                    tag += "<li class='page-item " + active + "'><a class='page-link page-custom' href='" + i +
+                    tag += "<li class='page-item page-numbers " + active + "'><a class='page-link page-custom' href='" + i +
                         "'>" +
                         i + "</a></li>";
                 }
 
                 //다음 버튼 만들기
                 if (pageInfo.next) {
-                    tag += "<li class='page-item'><a class='page-link page-active' href='" + (end + 1) +
-                        "'>다음</a></li>";
+                    tag += "<li class='page-item page-numbers'><a class='page-link page-active' href='" + (end + 1) +
+                        "'>next</a></li>";
                 }
+                
+                tag += "</div>"
 
                 //태그 삽입하기
                 $(".pagination").html(tag);
@@ -513,11 +507,11 @@
 
                 //기존 댓글 내용을 가져오기(부모노드로 올라가서 위에 형제 필요)
                 const originText = e.target.parentNode.previousElementSibling.textContent;
-                console.log(originText);
+                console.log('기존 텍스트' + originText);
 
                 //해당 댓글번호 가져오기
                 const replyNo = e.target.parentNode.parentNode.parentNode.dataset.replyid;
-
+                console.log('댓글 번호' + replyNo);
                 //댓글내용 모달에 넣어놓기
                 $('#modReplyText').val(originText);
                 //input hidden에 댓글번호 넣어놓기
