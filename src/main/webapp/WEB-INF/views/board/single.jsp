@@ -10,78 +10,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Single page</title>
-    
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
     <%@ include file="../include/header.jsp" %>
-
-    <style>
-        .table {
-            margin: 20px 80px;
-            width: 100%;
-            height: 100%;
-            border-bottom: 1px solid rgb(73, 73, 73);
-        }
-
-        .title-box {
-            width: 100%;
-            border-bottom: 1px solid rgb(73, 73, 73);
-        }
-
-        .title {
-            font-size: 40px;
-            color: rgba(14, 14, 14, 0.699);
-        }
-
-        .date {
-            font-size: 15px;
-            color: rgba(122, 120, 120, 0.699);
-        }
-
-        .dateCnt {
-            margin-left: -40px;
-        }
-
-        .viewCount {
-            margin-left: 15px;
-            font-size: 15px;
-            color: rgba(122, 120, 120, 0.699);
-        }
-
-        .content {
-            width: 100%;
-            height: auto;
-            overflow: auto;
-            min-height: 7rem;
-            background: #fff;
-            text-align: center;
-            font-size: 15px;
-            resize: none;
-            padding: 1em;
-            padding-bottom: 0.2em;
-            white-space: pre-wrap;
-        }
-
-        #btns {
-            margin-left: 75px;
-            margin-bottom: 80px;
-        }
-
-        #back-btn,
-        #modify-btn,
-        #del-btn {
-            font-size: 17px;
-            margin-right: 20px;
-            color: rgba(15, 15, 15, 0.699);
-        }
-
-        #back-btn:hover,
-        #modify-btn:hover,
-        #del-btn:hover {
-            color: rgba(26, 110, 189, 0.699);
-        }
-    </style>
 
 </head>
 
@@ -102,21 +35,22 @@
                                             <div class="row">
                                                 <div class="offset-md-1 col-md-10">
 
-                                                    <div class="table">
+                                                    <div class="single-table">
                                                         <!-- <h1>${article.serialNo}번 게시물 내용</h1> -->
-                                                        <div class="title-box">
-                                                            <h1 class="title">${article.boardTitle}</h1><br>
-                                                            <ul class="dateCnt">
-                                                                <h15 class="date">
+                                                        <div class="single-title-box">
+                                                            <h1 class="single-title">${article.boardTitle}</h1><br>
+                                                            <ul class="single-dateCnt">
+                                                                <h15 class="single-date">
                                                                     <fmt:formatDate value="${article.boardDate}"
                                                                         pattern="yyyy-MM-dd a hh:mm:ss" />
                                                                 </h15>
-                                                                <h15 class="viewCount">조회수 ${article.boardViewCnt}</h15>
+                                                                <h15 class="single-viewCount">조회수
+                                                                    ${article.boardViewCnt}</h15>
                                                             </ul>
                                                         </div>
 
                                                         <p>
-                                                            <pre class="content">${article.boardContent}</pre>
+                                                            <pre class="single-content">${article.boardContent}</pre>
                                                         </p>
 
                                                     </div>
@@ -129,27 +63,33 @@
 
                                                         <c:choose>
                                                             <c:when test="${categoryNo eq '1'}">
-                                                                <a id="back-btn" href="/board/movie-list"
+                                                                <a id="back-btn" class='btn btn-default'
+                                                                    href="/board/movie-list"
                                                                     style="text-decoration: none;">이전 목록</a>&nbsp;
                                                             </c:when>
                                                             <c:when test="${categoryNo eq '2'}">
-                                                                <a id="back-btn" href="/board/restaurant-list"
+                                                                <a id="back-btn" class="btn btn-default"
+                                                                    href="/board/restaurant-list"
                                                                     style="text-decoration: none;">이전 목록</a>&nbsp;
                                                             </c:when>
                                                             <c:when test="${categoryNo eq '3'}">
-                                                                <a id="back-btn" href="/board/daily-list"
+                                                                <a id="back-btn" class="btn btn-default"
+                                                                    href="/board/daily-list"
                                                                     style="text-decoration: none;">이전 목록</a>&nbsp;
                                                             </c:when>
                                                         </c:choose>
 
+                                                        <div class="mod-del">
+                                                            <a id="modify-btn" class="btn btn-default"
+                                                                href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
+                                                                style="text-decoration: none;">글
+                                                                수정하기</a>
+                                                            <a data-serial-no="${article.serialNo}"
+                                                                data-category-no="${article.categoryNo}" id="del-btn"
+                                                                class="btn btn-danger" href=""
+                                                                style="text-decoration: none;">삭제</a>
+                                                        </div>
 
-                                                        <a id="modify-btn"
-                                                            href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
-                                                            style="text-decoration: none;">글
-                                                            수정하기</a>
-                                                        <a data-serial-no="${article.serialNo}"
-                                                            data-category-no="${article.categoryNo}" id="del-btn"
-                                                            href="" style="text-decoration: none;">삭제</a>
                                                     </div>
 
                                                 </div>
@@ -161,7 +101,7 @@
                                             <!-- ############################## 댓글 영역 ############################## -->
                                             <!-- ###################################################################### -->
 
-                                            <div id="replies" class="row table">
+                                            <div id="replies" class="row single-table">
                                                 <div class="offset-md-1 col-md-10">
                                                     <!-- 댓글 쓰기 영역 -->
                                                     <div class="card">
@@ -271,10 +211,10 @@
             </div>
     </div>
     </section>
-    
+
     <!-- 제이쿼리는 include.header.jsp에 넣어두었습니다.
     <script src="js/jquery-3.1.1.min.js"></script> -->
-    
+
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/isotope.pkgd.js"></script>
@@ -372,24 +312,27 @@
 
                 //이전 버튼 만들기
                 if (pageInfo.prev) {
-                    tag += "<li class='page-item page-numbers'><a class='page-link page-active' href='" + (begin - 1) +
+                    tag += "<li class='page-item page-numbers'><a class='page-link page-active' href='" + (
+                            begin - 1) +
                         "'>prev</a></li>";
                 }
 
                 //페이지 번호 리스트 만들기
                 for (let i = begin; i <= end; i++) {
                     const active = (pageInfo.page.pageNum === i) ? 'p-active' : '';
-                    tag += "<li class='page-item page-numbers " + active + "'><a class='page-link page-custom' href='" + i +
+                    tag += "<li class='page-item page-numbers " + active +
+                        "'><a class='page-link page-custom' href='" + i +
                         "'>" +
                         i + "</a></li>";
                 }
 
                 //다음 버튼 만들기
                 if (pageInfo.next) {
-                    tag += "<li class='page-item page-numbers'><a class='page-link page-active' href='" + (end + 1) +
+                    tag += "<li class='page-item page-numbers'><a class='page-link page-active' href='" + (end +
+                            1) +
                         "'>next</a></li>";
                 }
-                
+
                 tag += "</div>"
 
                 //태그 삽입하기
@@ -411,15 +354,16 @@
                         "       <span class='col-md-3'>" +
                         "         <b>" + reply.replyWriter + "</b>" +
                         "       </span>" +
-                        "       <span class='offset-md-6 col-md-3 text-right'><b>" + formatDate(reply
+                        "       <span class='offset-md-6 col-md-3 text-right card-content formdata'><b>" +
+                        formatDate(reply
                             .replyDate) +
                         "</b></span>" +
                         "    </div><br>" +
                         "    <div class='row'>" +
                         "       <div class='col-md-6'>" + reply.replyText + "</div>" +
-                        "       <div class='offset-md-2 col-md-4 text-right'>" +
-                        "         <a id='replyModBtn' class='btn btn-sm btn-outline-dark' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
-                        "         <a id='replyDelBtn' class='btn btn-sm btn-outline-dark' href='#'>삭제</a>" +
+                        "       <div class='text-right card-content'>" +
+                        "         <a id='replyModBtn' class='btn badge bg-secondary' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
+                        "         <a id='replyDelBtn' class='btn badge bg-secondary' href='#'>삭제</a>" +
                         "       </div>" +
                         "    </div>" +
                         " </div>";
