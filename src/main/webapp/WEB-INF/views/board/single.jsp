@@ -28,7 +28,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="border-top">
-                            <div class="col-md-8">
+                            <!-- <div class="col-md-8"> -->
+                            <div>
+                                <!-- <div class="blog-area"> -->
                                 <div class="blog-area">
                                     <div class="blog-area-part">
                                         <div class="container">
@@ -52,45 +54,48 @@
                                                         <p>
                                                             <pre class="single-content">${article.boardContent}</pre>
                                                         </p>
+                                                        <!-- history.back 함수 사용 -->
+                                                        <!-- 무조건 지금 보는 페이지의 이전페이지로만 이동 가능합니다! -->
 
-                                                    </div>
+                                                        <div id="btns">
+                                                            <c:set var="categoryNo" value="${article.categoryNo}" />
 
-                                                    <!-- history.back 함수 사용 -->
-                                                    <!-- 무조건 지금 보는 페이지의 이전페이지로만 이동 가능합니다! -->
+                                                            <c:choose>
+                                                                <c:when test="${categoryNo eq '1'}">
+                                                                    <a id="back-btn" class='btn btn-default'
+                                                                        href="/board/movie-list"
+                                                                        style="text-decoration: none;">이전
+                                                                        목록</a>&nbsp;
+                                                                </c:when>
+                                                                <c:when test="${categoryNo eq '2'}">
+                                                                    <a id="back-btn" class="btn btn-default"
+                                                                        href="/board/restaurant-list"
+                                                                        style="text-decoration: none;">이전
+                                                                        목록</a>&nbsp;
+                                                                </c:when>
+                                                                <c:when test="${categoryNo eq '3'}">
+                                                                    <a id="back-btn" class="btn btn-default"
+                                                                        href="/board/daily-list"
+                                                                        style="text-decoration: none;">이전
+                                                                        목록</a>&nbsp;
+                                                                </c:when>
+                                                            </c:choose>
 
-                                                    <div id="btns">
-                                                        <c:set var="categoryNo" value="${article.categoryNo}" />
+                                                            <div class="mod-del">
+                                                                <a id="modify-btn" class="btn btn-default"
+                                                                    href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
+                                                                    style="text-decoration: none;">글
+                                                                    수정하기</a>
+                                                                <a data-serial-no="${article.serialNo}"
+                                                                    data-category-no="${article.categoryNo}"
+                                                                    id="del-btn" class="btn btn-danger" href=""
+                                                                    style="text-decoration: none;">삭제</a>
+                                                            </div>
 
-                                                        <c:choose>
-                                                            <c:when test="${categoryNo eq '1'}">
-                                                                <a id="back-btn" class='btn btn-default'
-                                                                    href="/board/movie-list"
-                                                                    style="text-decoration: none;">이전 목록</a>&nbsp;
-                                                            </c:when>
-                                                            <c:when test="${categoryNo eq '2'}">
-                                                                <a id="back-btn" class="btn btn-default"
-                                                                    href="/board/restaurant-list"
-                                                                    style="text-decoration: none;">이전 목록</a>&nbsp;
-                                                            </c:when>
-                                                            <c:when test="${categoryNo eq '3'}">
-                                                                <a id="back-btn" class="btn btn-default"
-                                                                    href="/board/daily-list"
-                                                                    style="text-decoration: none;">이전 목록</a>&nbsp;
-                                                            </c:when>
-                                                        </c:choose>
-
-                                                        <div class="mod-del">
-                                                            <a id="modify-btn" class="btn btn-default"
-                                                                href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
-                                                                style="text-decoration: none;">글
-                                                                수정하기</a>
-                                                            <a data-serial-no="${article.serialNo}"
-                                                                data-category-no="${article.categoryNo}" id="del-btn"
-                                                                class="btn btn-danger" href=""
-                                                                style="text-decoration: none;">삭제</a>
                                                         </div>
-
                                                     </div>
+
+
 
                                                 </div>
 

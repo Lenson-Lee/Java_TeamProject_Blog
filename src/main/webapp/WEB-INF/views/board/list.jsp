@@ -240,13 +240,13 @@
 
                             <div class="amount-box">
                                 <div class="amount">
-                                    <a data-amount="10"
+                                    <a data-amount="10" class="${amount == 10 ? 'current': ''}"
                                         href="/board/movie-list?amount=10&type=${maker.page.type}&keyword=${maker.page.keyword}">10</a>
 
-                                    <a data-amount="20"
+                                    <a data-amount="20" class="${amount == 20 ? 'current': ''}"
                                         href="/board/movie-list?amount=20&type=${maker.page.type}&keyword=${maker.page.keyword}">20</a>
 
-                                    <a data-amount="30"
+                                    <a data-amount="30" class="${amount == 30 ? 'current': ''}"
                                         href="/board/movie-list?amount=30&type=${maker.page.type}&keyword=${maker.page.keyword}">30</a>
                                 </div>
                             </div>
@@ -374,22 +374,34 @@
             }
         }
 
-        // //amount 클릭시 색상변경 이벤트
-        // const $parent = document.querySelector('.amount');
-        // console.log($parent);
-        // const $target = $parent.querySelector('a');
+        //amount 클릭시 색상변경 이벤트
+        const $amount = document.querySelector('.amount');
+        const $target = $amount.children;
+
+        //amount 속의 클릭이벤트를 위해 amount 배열을 추출
         // console.log($target);
+        // console.log($target[0]);
+        // console.log($target[1]);
+        // console.log($target[2]);
 
-        // $parent.addEventListener('click', e => {
-            
-        //     e.preventDefault();
+        $target[0].addEventListener('click', e=> {
+        
+            console.log('10 클릭이벤트!');
 
-        //     e.classList.add("active");
+            $target[0].stopPropagation;
 
-        //     console.log(e);
-        // })
+            //기존의 current 클래스 삭제
+            for(i=0; i<3; i++) {
+                
+                console.log('current 삭제!');
 
+                $target[i].classList.remove('current');
+            }
 
+            console.log('클래스 부여!');
+            $target[0].classList.add('current');
+        })
+        
         //메인 실행부   (common.PageMaker가 알고있다.)
         (function () {
             appendPageActive('${maker.page.pageNum}');
