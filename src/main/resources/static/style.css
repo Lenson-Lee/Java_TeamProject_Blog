@@ -591,11 +591,16 @@ section.blog-post-area h4 span.author-name {
     border-bottom: solid 1px #999;
 }
 .card-content {
-    margin-right: 10px;
     float: right;
 }
 .formdata {
     color: #757575;
+}
+.reply-text{
+    padding: 0 15px;
+}
+.reply-badge {
+    margin-right: 10px;
 }
 
 /* 댓글 페이징 */

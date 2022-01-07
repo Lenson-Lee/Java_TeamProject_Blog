@@ -365,8 +365,8 @@
                         "</b></span>" +
                         "    </div><br>" +
                         "    <div class='row'>" +
-                        "       <div class='col-md-6'>" + reply.replyText + "</div>" +
-                        "       <div class='text-right card-content'>" +
+                        "       <div class='reply-text'>" + reply.replyText + "</div>" +
+                        "       <div class='text-right card-content reply-badge'>" +
                         "         <button id='replyModBtn' class='btn badge bg-secondary' data-toggle='modal' data-target='#replyModifyModal'>수정</button>&nbsp;" +
                         "         <a id='replyDelBtn' class='btn badge bg-secondary' href='#'>삭제</a>" +
                         "       </div>" +
