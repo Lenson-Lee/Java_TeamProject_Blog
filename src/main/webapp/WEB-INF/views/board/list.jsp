@@ -311,7 +311,7 @@
                     </c:if>
 
                     <c:forEach var="i" begin="${maker.beginPage}" end="${maker.endPage}" step="1">
-                        <li class="page-item page-numbers"><a class=" page-link"
+                        <li class="page-item page-numbers ${i == maker.page.pageNum ? 'current': ''}"><a class=" page-link"
                                 href="/board/movie-list?pageNum=${i}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">${i}</a>
                         </li>
                     </c:forEach>

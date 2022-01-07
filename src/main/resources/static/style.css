@@ -28,6 +28,11 @@
     font-weight: 500;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .wrapper header.header .logo {}
 
 .wrapper header.header .logo h2 {
@@ -315,7 +320,7 @@ section.blog-post-area h4 span.author-name {
 
 .blog-post-area .pagination .nav-links .page-numbers.current {
     background: #448aff;
-    color: #fff;
+    color: #fff !important;
 }
 
 .pagination .nav-links .page-numbers:hover {
@@ -407,10 +412,6 @@ section.blog-post-area h4 span.author-name {
     line-height: 35px;
     position: relative;
     text-align: justify;
-}
-
-.single-blog-area .blog-area-part p {
-    margin-top: 30px;
 }
 
 .single-blog-area .for-style {

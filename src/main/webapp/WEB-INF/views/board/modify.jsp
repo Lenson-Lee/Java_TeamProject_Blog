@@ -45,7 +45,7 @@
                         value="${article.boardTitle}"><br>
                     <br>
                     <!-- 텍스트 에디터 -->
-                    <textarea id="textArea-edit" class="input" name="boardContent">
+                    <textarea id="textArea-edit" class="input" name="boardContent">${article.boardContent}
                     </textarea>
                     <br>
 

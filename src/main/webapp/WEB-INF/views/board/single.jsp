@@ -191,7 +191,7 @@
                                                         <button id="replyModBtn" type="button"
                                                             class="btn btn-dark">수정</button>
                                                         <button id="modal-close" type="button" class="btn btn-danger"
-                                                            data-bs-dismiss="modal">닫기</button>
+                                                            data-dismiss="modal">닫기</button>
                                                     </div>
 
 
@@ -362,7 +362,7 @@
                         "    <div class='row'>" +
                         "       <div class='col-md-6'>" + reply.replyText + "</div>" +
                         "       <div class='text-right card-content'>" +
-                        "         <a id='replyModBtn' class='btn badge bg-secondary' data-bs-toggle='modal' data-bs-target='#replyModifyModal'>수정</a>&nbsp;" +
+                        "         <button id='replyModBtn' class='btn badge bg-secondary' data-toggle='modal' data-target='#replyModifyModal'>수정</button>&nbsp;" +
                         "         <a id='replyDelBtn' class='btn badge bg-secondary' href='#'>삭제</a>" +
                         "       </div>" +
                         "    </div>" +
