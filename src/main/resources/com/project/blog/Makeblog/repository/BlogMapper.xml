@@ -136,6 +136,20 @@
              테이블명 (공백) 인덱스명 -->
 
 
+    <!--  첨부파일 추가 쿼리  -->
+    <insert id="addFile">
+        INSERT INTO file_upload
+        (file_path, board_no)
+        VALUES
+        (#{filePath}, seq_board.currval)
+    </insert>
+    <!--  첨부파일 경로 불러오기  -->
+    <select id="getFilePaths" resultType="string">
+        SELECT file_path
+        FROM file_upload
+        WHERE board_no = #{boardNo}
+    </select>
+
     <!--    검색기능 추가-->
     <!--  임시로 영화만 리스트 만들기 해보겠음  AND category_no = 1는 직접 추가했다.-->
     <select id="getSearchArticles" resultMap="boardMap">
