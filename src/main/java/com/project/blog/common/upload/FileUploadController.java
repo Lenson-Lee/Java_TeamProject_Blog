@@ -22,7 +22,7 @@ import java.util.List;
 public class FileUploadController {
 
     //업로드파일 저장 경로
-    private static final String UPLOAD_PATH = "D:\\developing_soon9\\upload";
+    private static final String UPLOAD_PATH = "C:\\Users\\user\\Desktop\\lenson blog\\upload";
 
     //upload-form.jsp를 열어주는 처리
     @GetMapping("/upload-form")
@@ -145,6 +145,7 @@ public class FileUploadController {
                 //fileName => 썸네일 이미지 경로: /2021/06/09/s_djfsdfhs_abc.jpg
                 //originalName => 원본 이미지 경로: /2021/06/09/djfsdfhs_abc.jpg
                 int lastSlashIdx = fileName.lastIndexOf("/");
+                // /2021/06/09/ + djfsdfhs_abc.jpg
                 String originalName = fileName.substring(0, lastSlashIdx + 1)
                                 + fileName.substring(lastSlashIdx + 3);
 

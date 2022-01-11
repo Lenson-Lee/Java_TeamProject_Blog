@@ -26,7 +26,7 @@ public class FileUtils {
         mediaMap.put("PNG", MediaType.IMAGE_PNG);
     }
 
-    //확장자를 전달하면 해당 미디어타입을 리턴하는 메서드
+    //확장자를 전달하면 해당 미디어타입을 리턴하는 메서드 (여기서는 JPG,GIF,PNG 만 사용하기 위함)
     public static MediaType getMediaType(String ext) {
         ext = ext.toUpperCase();
 
@@ -45,7 +45,6 @@ public class FileUtils {
 
         //중복없는 파일명으로 변환
         //UUID: 네트워크상에서 고유성이 보장되는 id를 만드는 표준규약
-
         //dog.jpg  ->  324342dfsdfsfdsfs-dfshlkjfdsh34234-dshjfslkdfh_dog.jpg
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
@@ -135,12 +134,14 @@ public class FileUtils {
         int d = now.getDayOfMonth();
 
         //폴더 생성
+        //valueOf():호 안의 해당 객체를 String 객체로 변환시키는 역할.
         String[] dateInfo = {String.valueOf(y), len2(m), len2(d)};
         for (String date : dateInfo) {
             //File.separator - 운영체제에 맞게 경로구분 문자열을 만들어줌
             // 윈도우 : \\ , 리눅스 : /
             uploadPath += File.separator + date;
             //이 경로대로 폴더 생성
+            //mkdir 은 make directory의 약자이며 원하는 이름으로 디렉토리를 생성하게 해주는 명령어
             File directory = new File(uploadPath);
             if (!directory.exists()) {
                 directory.mkdir();
