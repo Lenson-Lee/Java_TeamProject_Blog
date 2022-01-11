@@ -385,23 +385,20 @@
         // console.log($target[2]);
 
         $target[0].addEventListener('click', e=> {
-        
-            console.log('10 클릭이벤트!');
 
-            $target[0].stopPropagation;
+            $target[0].preventDefault;
 
             //기존의 current 클래스 삭제
             for(i=0; i<3; i++) {
-                
                 console.log('current 삭제!');
-
                 $target[i].classList.remove('current');
             }
-
-            console.log('클래스 부여!');
+            
             $target[0].classList.add('current');
         })
         
+
+
         //메인 실행부   (common.PageMaker가 알고있다.)
         (function () {
             appendPageActive('${maker.page.pageNum}');

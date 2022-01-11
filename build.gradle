@@ -40,8 +40,8 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
 
     //스프링 시큐리티 라이브러리
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.security:spring-security-test'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    implementation 'org.springframework.security:spring-security-test'
 
     //파일업로드 유틸 라이브러리
     implementation 'commons-io:commons-io:2.8.0'

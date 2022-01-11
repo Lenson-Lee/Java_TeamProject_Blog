@@ -3,6 +3,7 @@ package com.project.blog.Makeblog.domain;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter @Setter
 @ToString
@@ -19,6 +20,9 @@ public class Blog {
     private String address;
 
     private boolean newFlag; //신규게시물 여부
+
+    //첨부파일 경로 리스트
+    private List<String> filePathList;
 
 
 }

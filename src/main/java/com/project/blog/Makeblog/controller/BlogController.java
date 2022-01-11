@@ -7,11 +7,11 @@ import com.project.blog.Makeblog.domain.Blog;
 import com.project.blog.Makeblog.service.BlogService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -39,7 +39,7 @@ public class BlogController {
     // 2. 게시물 상세 조회 요청
     @GetMapping("/single")
     public String content(int serialNo, int categoryNo, Model model) {
-        log.info("/board/content GET 요청! - 글번호: " + serialNo);
+        log.info("/board/content 게시글 상세 GET 요청! - 글번호: " + serialNo);
         Blog content = blogService.getContent(serialNo, categoryNo);
         int viewCount = blogService.upViewCount(serialNo);
         model.addAttribute("article", content);
@@ -54,6 +54,13 @@ public class BlogController {
         }
         return "board/single";
     }
+    //글 상세보기 요청에서 첨부파일 경로리스트를 조회하는 비동기요청
+    @GetMapping("/file/{serialNo}")
+    @ResponseBody
+    public ResponseEntity<List<String>> getFilePaths(@PathVariable int serialNo) {
+        log.info("/board/file/" + serialNo + " 첨부파일 비동기 GET 요청!");
+        return new ResponseEntity<>(blogService.getFilePaths(serialNo), HttpStatus.OK);
+    }
 
     // 게시물 등록페이지로 이동
     @GetMapping("/write")
@@ -67,7 +74,7 @@ public class BlogController {
     // 기본값 : redirect:/board/list
     @PostMapping("/write")
     public String write(Blog blog, RedirectAttributes ra, int categoryNo) {
-        log.info("/board/write POST 요청! - " + blog);
+        log.info("/board/write 게시글 등록 POST 요청! - " + blog);
         blogService.insert(blog);
 
         if (categoryNo == 1) {
@@ -96,7 +103,7 @@ public class BlogController {
     // 기본값 : redirect:/board/list
     @GetMapping("/delete")
     public String delete(int serialNo, int categoryNo) {
-        log.info("/board/delete GET ! - " + serialNo);
+        log.info("/board/delete 삭제 GET ! - " + serialNo);
         blogService.remove(serialNo, categoryNo);
 
         if (categoryNo == 1) {
@@ -114,7 +121,7 @@ public class BlogController {
     // 게시물 수정페이지로 이동
     @GetMapping("/modify")
     public String modify(int serialNo, int categoryNo, Model model) {
-        log.info("/board/modify GET! - " + serialNo);
+        log.info("/board/modify 수정 GET! - " + serialNo);
         Blog content = blogService.getContent(serialNo, categoryNo);
         model.addAttribute("article", content);
         return "board/modify";
@@ -123,8 +130,8 @@ public class BlogController {
     // 5. 게시물 수정 요청
     @PostMapping("/modify")
     public String modify(Blog blog) {
-        log.info("/board/modify POST! - " + blog);
-        log.info(blog.getSerialNo());
+        log.info("/board/modify 수정요청 POST! - " + blog);
+//        log.info(blog.getSerialNo());
         blogService.modify(blog);
         return "redirect:/board/single?serialNo=" + blog.getSerialNo() + "&categoryNo=" + blog.getCategoryNo();
     }

@@ -70,8 +70,10 @@ public interface BlogMapper {
     List<Blog> getRestaurantBestArticle();
     List<Blog> getDailyBestArticle();
 
-
-
+    //게시글 첨부파일 경로 얻기
+    List<String> getFilePaths(int serialNo);
+    //파일 첨부 기능
+    void addFile(String filePath);
 }
 
 

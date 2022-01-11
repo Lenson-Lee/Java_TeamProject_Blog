@@ -4,8 +4,13 @@ import com.project.blog.common.paging.Page;
 import com.project.blog.Makeblog.domain.Blog;
 import com.project.blog.Makeblog.repository.BlogMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -247,6 +252,17 @@ public class BlogService {
 
     // 3. 게시물 등록
     public boolean insert(Blog blog) {
+
+        blogMapper.insertArticle(blog);
+
+        //만약에 첨부파일이 존재한다면 추가 쿼리를 동작해야 함
+        List<String> filePathList = blog.getFilePathList();
+        if (filePathList != null) {
+            for (String path : filePathList) {
+                blogMapper.addFile(path);
+            }
+        }
+
         return blogMapper.insertArticle(blog);
     }
 
@@ -263,5 +279,10 @@ public class BlogService {
     // 6. 조회수 상승
     public int upViewCount(int serialNo) {
         return blogMapper.upViewCount(serialNo);
+    }
+
+    //첨부파일 경로목록 구하기
+    public List<String> getFilePaths(int serialNo) {
+        return blogMapper.getFilePaths(serialNo);
     }
 }

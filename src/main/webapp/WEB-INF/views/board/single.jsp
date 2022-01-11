@@ -57,9 +57,15 @@
                                                         <!-- history.back 함수 사용 -->
                                                         <!-- 무조건 지금 보는 페이지의 이전페이지로만 이동 가능합니다! -->
 
-                                                        <div id="btns">
-                                                            <c:set var="categoryNo" value="${article.categoryNo}" />
+                                                        <!-- 첨부파일 영역 -->
+                                                        <div class="row">
+                                                            <div class="attach-file-list"></div>
+                                                        </div>
 
+
+                                                        <div id="btns">
+                                                            <!-- 카테고리 넘버에 따라 이전으로 돌아가기 -->
+                                                            <c:set var="categoryNo" value="${article.categoryNo}" />
                                                             <c:choose>
                                                                 <c:when test="${categoryNo eq '1'}">
                                                                     <a id="back-btn" class='btn btn-default'
@@ -81,6 +87,7 @@
                                                                 </c:when>
                                                             </c:choose>
 
+                                                            <!-- 글 수정 및 삭제 -->
                                                             <div class="mod-del">
                                                                 <a id="modify-btn" class="btn btn-default"
                                                                     href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
@@ -235,8 +242,8 @@
             console.log('삭제버튼 클릭됨!');
             const serialNo = D.target.dataset.serialNo;
             const categoryNo = D.target.dataset.categoryNo;
-            console.log(serialNo);
-            console.log(categoryNo);
+            // console.log(serialNo);
+            // console.log(categoryNo);
 
             location.href = '/board/delete?serialNo=' + serialNo +
                 '&categoryNo=' + categoryNo;
@@ -249,6 +256,78 @@
         }
     </script>
 
+
+    <!-- ######################### -->
+    <!-- 첨부파일 스크립트 J Query -->
+    <!-- ######################### -->
+    <script>
+        $(function () {
+            const serialNo = '${article.serialNo}';
+            const $attachDiv = $('.attach-file-list');
+
+            //첨부파일 경로 목록 요청
+            fetch('/board/file/' + serialNo)
+                .then(res => res.json())
+                .then(filePathList => {
+                    console.log("첨부파일 경로 비동기요청!");
+                    showFileData(filePathList)
+                });
+
+
+            //드롭한 파일의 형식에 따라 태그를 만들어주는 함수
+            function showFileData(pathList) {
+                //경로: \2021\06\08\dfjskfdjskf_dfjskfdj_dog.gif
+                for (let path of pathList) {
+                    //이미지인지 아닌지에 따라 구분하여 처리
+                    console.log("태그만드는 함수!");
+                    checkExtType(path);
+                }
+            }
+
+            //확장자 판별 후 태그 생성 처리 함수
+            function checkExtType(path) {
+                //원본 파일명 추출
+                let originFileName = path.substring(path.indexOf("_") + 1);
+
+                const $div = document.createElement('div');
+                $div.classList.add('thumbnail-box');
+
+
+                //이미지인지 확장자 체크
+                if (isImageFile(originFileName)) {
+                    //이미지인 경우
+                    console.log("이미지 확장자 체크 완료");
+                    originFileName = originFileName.substring(originFileName.indexOf("_") + 1);
+
+                    const $img = document.createElement('img');
+                    $img.setAttribute('src', '/loadFile?fileName=' + path);
+                    $img.setAttribute('alt', originFileName);
+
+                    $div.appendChild($img);
+
+
+                } else {
+                    //이미지가 아닌 경우: 다운로드 링크 생성
+                    console.log("파일 확장자 체크 완료");
+                    const $link = document.createElement('a');
+                    $link.setAttribute('href', '/loadFile?fileName=' + path);
+
+                    $link.innerHTML = '<img src="/img/file_icon.jpg" alt="파일아이콘"> <span class="file-name">' +
+                        originFileName + '</span>';
+
+                    $div.appendChild($link);
+                }
+                $attachDiv.append($div);
+            }
+
+            //정규표현식으로 이미지파일 여부 확인하는 함수
+            function isImageFile(originFileName) {
+                const pattern = /jpg$|gif$|png$/i;
+                return originFileName.match(pattern);
+            }
+
+        }); //end jquery
+    </script>
 
     <!-- ######################### -->
     <!-- 댓글 관련 스크립트 J Query -->
@@ -268,8 +347,7 @@
             function formatDate(datetime) {
                 //문자열 날짜 데이터를 날짜객체로 변환
                 const dateObj = new Date(datetime);
-                console.log("날짜 객체");
-                console.log(dateObj);
+                // console.log("날짜 객체" + dateObj);
                 //날짜객체를 통해 각 날짜 정보 얻기
                 let year = dateObj.getFullYear();
 
@@ -394,7 +472,7 @@
                 fetch('/api/reply/' + boardNo + '/' + pageNum)
                     .then(res => res.json())
                     .then(replyMap => {
-                        console.log(replyMap);
+                        // console.log(replyMap);
                         //맵에는 페이지메이커랑 리플라이리스트가 있어서 오류가 뜬다. 리플라이리스트만 빼서 줘야함.
                         //근데 DOM에서 정보를 알아야 해서 DOM에서 쪼갬 컨트롤누르고 들어가보면 더 알 수 있음~
                         makeReplyListDOM(replyMap);
@@ -456,11 +534,11 @@
 
                 //기존 댓글 내용을 가져오기(부모노드로 올라가서 위에 형제 필요)
                 const originText = e.target.parentNode.previousElementSibling.textContent;
-                console.log('기존 텍스트' + originText);
+                // console.log('기존 텍스트' + originText);
 
                 //해당 댓글번호 가져오기
                 const replyNo = e.target.parentNode.parentNode.parentNode.dataset.replyid;
-                console.log('댓글 번호' + replyNo);
+                // console.log('댓글 번호' + replyNo);
                 //댓글내용 모달에 넣어놓기
                 $('#modReplyText').val(originText);
                 //input hidden에 댓글번호 넣어놓기
