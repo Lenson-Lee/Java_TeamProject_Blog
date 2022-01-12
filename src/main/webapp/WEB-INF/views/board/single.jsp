@@ -269,7 +269,7 @@
             fetch('/board/file/' + serialNo)
                 .then(res => res.json())
                 .then(filePathList => {
-                    console.log("첨부파일 경로 비동기요청!");
+                    console.log("첨부파일 경로 비동기요청!" + filePathList);
                     showFileData(filePathList)
                 });
 
@@ -277,9 +277,9 @@
             //드롭한 파일의 형식에 따라 태그를 만들어주는 함수
             function showFileData(pathList) {
                 //경로: \2021\06\08\dfjskfdjskf_dfjskfdj_dog.gif
+                    console.log("태그만드는 함수!" + pathList);
                 for (let path of pathList) {
                     //이미지인지 아닌지에 따라 구분하여 처리
-                    console.log("태그만드는 함수!");
                     checkExtType(path);
                 }
             }
@@ -289,8 +289,10 @@
                 //원본 파일명 추출
                 let originFileName = path.substring(path.indexOf("_") + 1);
 
+                console.log("오리지널 파일명 = " + originFileName);
                 const $div = document.createElement('div');
                 $div.classList.add('thumbnail-box');
+
 
 
                 //이미지인지 확장자 체크

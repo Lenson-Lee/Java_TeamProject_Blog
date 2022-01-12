@@ -137,6 +137,7 @@
 
 
     <!--  첨부파일 추가 쿼리  -->
+    <!--  첨부파일에서는 board_no에 fk 로 시리얼넘버를 주었음  -->
     <insert id="addFile">
         INSERT INTO file_upload
         (file_path, board_no)
@@ -147,7 +148,7 @@
     <select id="getFilePaths" resultType="string">
         SELECT file_path
         FROM file_upload
-        WHERE board_no = #{boardNo}
+        WHERE board_no = #{serialNo}
     </select>
 
     <!--    검색기능 추가-->

@@ -119,6 +119,7 @@
         CKEDITOR.replace('boardContent');
 
 
+        // 첨부파일 드래그 이벤트
         $(function () { //start jQuery
 
             //drag & drop 이벤트
@@ -140,7 +141,7 @@
             //드롭 이벤트
             $dropBox.on('drop', e => {
                 e.preventDefault();
-                alert('파일이 드롭됨!');
+                alert('파일이 추가되었습니다.!');
 
                 //1.드롭된 파일의 데이터를 읽기
                 const fileDatas = e.originalEvent.dataTransfer.files;

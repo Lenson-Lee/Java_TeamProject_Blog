@@ -14,7 +14,7 @@ PRIMARY KEY (file_path);
 ALTER TABLE file_upload
 ADD CONSTRAINT fk_file_upload_board
 FOREIGN KEY (board_no)
-REFERENCES board (board_no)
+REFERENCES board (serial_no)
 ON DELETE CASCADE;
 
 
