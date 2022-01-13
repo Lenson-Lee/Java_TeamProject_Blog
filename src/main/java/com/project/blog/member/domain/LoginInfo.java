@@ -12,4 +12,5 @@ public class LoginInfo {
     private String password;
     private boolean autoLogin;
 
+
 }
