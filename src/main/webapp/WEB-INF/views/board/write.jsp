@@ -73,9 +73,9 @@
 
 
                     <input class="btn btn-outline-danger" type="submit" value="등록">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#abc">
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#abc">
                         모달 테스트
-                    </button>
+                    </button> -->
 
                     <button type="submit">등록</button>
 

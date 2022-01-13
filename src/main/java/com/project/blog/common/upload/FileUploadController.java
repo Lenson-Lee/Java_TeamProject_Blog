@@ -22,7 +22,7 @@ import java.util.List;
 public class FileUploadController {
 
     //업로드파일 저장 경로
-    private static final String UPLOAD_PATH = "C:\\Users\\user\\Desktop\\lenson blog\\upload";
+    private static final String UPLOAD_PATH = "C://Users//user//Desktop//lenson_blog//upload";
 
     //upload-form.jsp를 열어주는 처리
     @GetMapping("/upload-form")
@@ -45,14 +45,14 @@ public class FileUploadController {
             //업로드파일의 정보객체를 생성
             //File클래스의 생성자를 통해 첫번째 파라미터로 저장경로를
             //두번째 파라미터로 파일명을 넣어주세요
-            //File uploadFile = new File(UPLOAD_PATH, file.getOriginalFilename());
+            File uploadFile = new File(UPLOAD_PATH, file.getOriginalFilename());
 
             //해당 저장위치에 저장명령
-//            try {
-//                file.transferTo(uploadFile);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                file.transferTo(uploadFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             String responseFilePath = FileUtils.uploadFile(file, UPLOAD_PATH);
             log.info("저장경로: " + responseFilePath);
