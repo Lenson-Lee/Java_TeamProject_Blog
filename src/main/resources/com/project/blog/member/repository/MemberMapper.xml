@@ -23,7 +23,7 @@
         </if>
     </select>
 
-    <resultMap id="userMap" type="com.spring.mvc.web.member.domain.Member">
+    <resultMap id="userMap" type="com.project.blog.member.domain.Member">
         <result property="regDate" column="reg_date"/>
     </resultMap>
 

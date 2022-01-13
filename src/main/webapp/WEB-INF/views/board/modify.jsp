@@ -28,8 +28,9 @@
 </head>
 
 <body>
+    <%@ include file="../include/login.jsp" %>
+    
     <div class="wrapper">
-
         <%@ include file="../include/static-category.jsp" %>
 
         <section class="write">

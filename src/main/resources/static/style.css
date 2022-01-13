@@ -957,7 +957,44 @@ section.blog-post-area h4 span.author-name {
 #search-form .row {
     padding-left: 15px;
 }
+/* #################### 로그인 아이콘 ####################*/
+#login-btn {
+    position: absolute;
+    right: 3%;
+    top: 2%;
+}
+#login-btn .btn {
+    background-color: #fff;
+    border: 1px solid #0f9ee0 !important;
+    /* border-color: #0f9ee0; */
+    color: rgb(68, 68, 68);
 
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+#login-btn .btn:hover {
+    background-color: #fbfbfb;
+    border: 1px solid #cecece !important;
+    /* border-color: #0f9ee0; */
+    color: rgb(68, 68, 68);
+}
 /* #################### 글쓰기 아이콘 ####################*/
 .writing a {
     display: inline-block;

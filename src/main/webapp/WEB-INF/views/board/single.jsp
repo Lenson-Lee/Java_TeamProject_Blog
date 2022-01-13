@@ -19,8 +19,9 @@
 </head>
 
 <body>
+    <%@ include file="../include/login.jsp" %>
+    
     <div class="wrapper">
-
         <%@ include file="../include/static-category.jsp" %>
 
         <section class="single-blog-area">
@@ -257,14 +258,13 @@
             const serialNo = '${article.serialNo}';
             const $attachDiv = $('.attach-file-list');
 
-            //첨부파일 경로 목록 요청
-            fetch('/file/' + serialNo)
+            //첨부파일 경로 목록 요청 
+            fetch('/board/file/' + serialNo)
                 .then(res => res.json())
                 .then(filePathList => {
                     console.log("첨부파일 경로 목록 요청", serialNo, filePathList);
                     showFileData(filePathList)
                 });
-
 
             //드롭한 파일의 형식에 따라 태그(?)를 만들어주는 함수
             function showFileData(pathList) {

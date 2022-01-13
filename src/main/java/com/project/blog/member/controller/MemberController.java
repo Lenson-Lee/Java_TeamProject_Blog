@@ -36,7 +36,8 @@ public class MemberController {
     public String signUp(Member member) {
         log.info("/member/sign-up POST - " + member);
         memberService.signUp(member);
-        return "redirect:/board/list";
+        return "redirect:/";
+        //가입시 홈으로 이동
     }
 
     //아이디, 이메일 중복체크 비동기 요청 처리
@@ -79,7 +80,7 @@ public class MemberController {
                 memberService.keepLogin(session, response, inputMember.getAccount());
             }
 
-            return "redirect:/board/list";
+            return "redirect:/";
         }
         return "member/login-result";
     }
@@ -115,7 +116,7 @@ public class MemberController {
                 response.addCookie(loginCookie);
                 memberService.logout(loginUser.getAccount());
             }
-            return "redirect:/board/list";
+            return "redirect:/";
         }
         return "redirect:/member/login";
     }

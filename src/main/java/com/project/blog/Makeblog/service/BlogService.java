@@ -262,8 +262,8 @@ public class BlogService {
                 blogMapper.addFile(path);
             }
         }
-
-        return blogMapper.insertArticle(blog);
+    //insertArticle을 두 번 리턴하게 되어 곤란하니 참 을 준다.
+        return true;
     }
 
     // 4. 게시물 삭제

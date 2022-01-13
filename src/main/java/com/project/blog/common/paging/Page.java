@@ -9,6 +9,7 @@ public class Page {
 
     private int pageNum; //현재 페이지 번호
     private int amount; //한 페이지당 게시물 수
+//    private int categoryNo;   //카테고리 코드 수정할 때 사용하는 변수
 
     private String type; //검색조건
     private String keyword = ""; //검색어

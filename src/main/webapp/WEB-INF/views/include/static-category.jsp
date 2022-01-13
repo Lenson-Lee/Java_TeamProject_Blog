@@ -21,6 +21,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- <div class="btn-box">
+            <c:if test="${loginUser == null}">
+                <a href="/member/sign-in" class="btn btn-primary">로그인</a>
+                <a href="/member/sign-up" class="btn btn-danger">회원가입</a>
+            </c:if>
+    
+            <c:if test="${loginUser != null}">
+                <span style="margin-right: 20px;">${loginUser.name}님 하이~!</span>
+                <a href="/member/logout" class="btn btn-danger">로그아웃</a>
+            </c:if>
+        </div> -->
+
+
     </div>
 </header>
 
