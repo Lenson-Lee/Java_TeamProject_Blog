@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    
+
     <%@ include file="../include/login.jsp" %>
 
     <div class="wrapper">
@@ -48,56 +48,60 @@
                                                                 </h15>
                                                                 <h15 class="single-viewCount">조회수
                                                                     ${article.boardViewCnt}</h15>
+                                                                
                                                             </ul>
                                                         </div>
 
                                                         <p>
+                                                            <!-- 첨부파일영역 -->
+                                                            <div class="row">
+                                                                <div class="attach-file-list"></div>
+                                                            </div>
+                                                            <!-- 게시글 내용 영역 -->
                                                             <pre class="single-content">${article.boardContent}</pre>
-                                                        </p>
+                                                          <!-- history.back 함수 사용 -->
+                                                          <!-- 무조건 지금 보는 페이지의 이전페이지로만 이동 가능합니다! -->
+
+                                                          <div id="btns">
+                                                              <c:set var="categoryNo" value="${article.categoryNo}" />
+
+                                                              <c:choose>
+                                                                  <c:when test="${categoryNo eq '1'}">
+                                                                      <a id="back-btn" class='btn btn-default'
+                                                                          href="/board/movie-list"
+                                                                          style="text-decoration: none;">이전 목록</a>&nbsp;
+                                                                  </c:when>
+                                                                  <c:when test="${categoryNo eq '2'}">
+                                                                      <a id="back-btn" class="btn btn-default"
+                                                                          href="/board/restaurant-list"
+                                                                          style="text-decoration: none;">이전 목록</a>&nbsp;
+                                                                  </c:when>
+                                                                  <c:when test="${categoryNo eq '3'}">
+                                                                      <a id="back-btn" class="btn btn-default"
+                                                                          href="/board/daily-list"
+                                                                          style="text-decoration: none;">이전 목록</a>&nbsp;
+                                                                  </c:when>
+                                                              </c:choose>
+
+                                                              <div class="mod-del">
+                                                                  <a id="modify-btn" class="btn btn-default"
+                                                                      href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
+                                                                      style="text-decoration: none;">글
+                                                                      수정하기</a>
+                                                                  <a data-serial-no="${article.serialNo}"
+                                                                      data-category-no="${article.categoryNo}"
+                                                                      id="del-btn" class="btn btn-danger" href=""
+                                                                      style="text-decoration: none;">삭제</a>
+                                                              </div>
+
+                                                          </div>
+                                                          </p>
 
                                                     </div>
 
-                                                    <!-- 첨부파일영역 -->
-                                                    <div class="row">
-                                                        <div class="attach-file-list"></div>
-                                                    </div>
 
-                                                    <!-- history.back 함수 사용 -->
-                                                    <!-- 무조건 지금 보는 페이지의 이전페이지로만 이동 가능합니다! -->
 
-                                                    <div id="btns">
-                                                        <c:set var="categoryNo" value="${article.categoryNo}" />
-
-                                                        <c:choose>
-                                                            <c:when test="${categoryNo eq '1'}">
-                                                                <a id="back-btn" class='btn btn-default'
-                                                                    href="/board/movie-list"
-                                                                    style="text-decoration: none;">이전 목록</a>&nbsp;
-                                                            </c:when>
-                                                            <c:when test="${categoryNo eq '2'}">
-                                                                <a id="back-btn" class="btn btn-default"
-                                                                    href="/board/restaurant-list"
-                                                                    style="text-decoration: none;">이전 목록</a>&nbsp;
-                                                            </c:when>
-                                                            <c:when test="${categoryNo eq '3'}">
-                                                                <a id="back-btn" class="btn btn-default"
-                                                                    href="/board/daily-list"
-                                                                    style="text-decoration: none;">이전 목록</a>&nbsp;
-                                                            </c:when>
-                                                        </c:choose>
-
-                                                        <div class="mod-del">
-                                                            <a id="modify-btn" class="btn btn-default"
-                                                                href="/board/modify?serialNo=${article.serialNo}&categoryNo=${article.categoryNo}"
-                                                                style="text-decoration: none;">글
-                                                                수정하기</a>
-                                                            <a data-serial-no="${article.serialNo}"
-                                                                data-category-no="${article.categoryNo}" id="del-btn"
-                                                                class="btn btn-danger" href=""
-                                                                style="text-decoration: none;">삭제</a>
-                                                        </div>
-
-                                                    </div>
+                                                  
 
                                                 </div>
 
@@ -305,11 +309,12 @@
                     const $link = document.createElement('a');
                     $link.setAttribute('href', '/loadFile?fileName=' + path);
 
-                    $link.innerHTML = '<img src="/img/file_icon.jpg" alt="파일아이콘"> <span class="file-name">' +
+                    $link.innerHTML = '<img src="/img/file_icon.jpg" alt="파일아이콘" class="img-file"> <span class="file-name">' +
                         originFileName + '</span>';
 
                     $div.appendChild($link);
                 }
+                //첨부파일 영역에 삽입
                 $attachDiv.append($div);
             }
 

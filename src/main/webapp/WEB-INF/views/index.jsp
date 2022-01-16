@@ -69,16 +69,12 @@
             </c:if>
 
             <c:if test="${loginUser != null}">
-                <span style="margin-right: 20px;">${loginUser.name}님 하이~!</span>
+                <span style="margin-right: 20px;">${loginUser.name}님</span>
                 <a href="/member/logout" class="btn btn-danger">로그아웃</a>
             </c:if>
         </div>
 
     </div>
-
-<c:if test="${loginUser != null}">
-    <div>현재 로그인한 유저: ${loginUser.name}</div>
-</c:if>
 
     <div class="wrapper">
         

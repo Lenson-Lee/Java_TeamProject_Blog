@@ -11,3 +11,7 @@
    <!-- 제이쿼리 crossorigin, integrity는 지워도 된다. -->
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="/js/bootstrap.min.js"></script>
+
+   <script src="js/jquery-3.1.1.min.js"></script>
+   <script src="js/owl.carousel.min.js"></script>
+   <script src="js/active.js"></script>

@@ -15,9 +15,6 @@
 
     <%@ include file="../include/header.jsp" %>
 
-
-
-
 </head>
 
 <body>
@@ -78,7 +75,8 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="../../img/post-image3.jpg" alt="">
+                                <!-- 이미지 썸네일 영역 -->
+                                    <img src="../../img/post-image8.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${recentArticles[0].serialNo}&categoryNo=${recentArticles[0].categoryNo}">${recentArticles[0].boardTitle}</a>
                                 </h3>
@@ -97,7 +95,7 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="../../img/post-image3.jpg" alt="">
+                                <img src="../../img/post-image9.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${recentArticles[1].serialNo}&categoryNo=${recentArticles[1].categoryNo}">${recentArticles[1].boardTitle}</a>
                                 </h3>
@@ -114,7 +112,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="../../img/post-image4.jpg" alt="">
+                                <img src="../../img/post-image2.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${recentArticles[2].serialNo}&categoryNo=${recentArticles[2].categoryNo}">${recentArticles[2].boardTitle}</a>
                                 </h3>
@@ -131,7 +129,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="../../img/post-image5.jpg" alt="">
+                                <img src="../../img/post-image3.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${recentArticles[3].serialNo}&categoryNo=${recentArticles[3].categoryNo}">${recentArticles[3].boardTitle}</a>
                                 </h3>
@@ -159,7 +157,7 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="../../img/post-image2.jpg" alt="">
+                                <img src="../../img/post-image4.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${bestArticles[0].serialNo}&categoryNo=${bestArticles[0].categoryNo}">${bestArticles[0].boardTitle}</a>
                                 </h3>
@@ -177,7 +175,7 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="../../img/post-image2.jpg" alt="">
+                                <img src="../../img/post-image5.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${bestArticles[1].serialNo}&categoryNo=${bestArticles[1].categoryNo}">${bestArticles[1].boardTitle}</a>
                                 </h3>
@@ -195,7 +193,7 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="../../img/post-image2.jpg" alt="">
+                                <img src="../../img/post-image6.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${bestArticles[2].serialNo}&categoryNo=${bestArticles[2].categoryNo}">${bestArticles[2].boardTitle}</a>
                                 </h3>
@@ -213,7 +211,7 @@
 
                         <div class="col-md-3">
                             <div class="single-post">
-                                <img src="../../img/post-image2.jpg" alt="">
+                                <img src="../../img/post-image7.jpg" alt="">
                                 <h3><a
                                         href="single?serialNo=${bestArticles[3].serialNo}&categoryNo=${bestArticles[3].categoryNo}">${bestArticles[3].boardTitle}</a>
                                 </h3>
@@ -313,7 +311,8 @@
                     </c:if>
 
                     <c:forEach var="i" begin="${maker.beginPage}" end="${maker.endPage}" step="1">
-                        <li class="page-item page-numbers ${i == maker.page.pageNum ? 'current': ''}"><a class=" page-link"
+                        <li class="page-item page-numbers ${i == maker.page.pageNum ? 'current': ''}"><a
+                                class=" page-link"
                                 href="/board/movie-list?pageNum=${i}&amount=${maker.page.amount}&type=${maker.page.type}&keyword=${maker.page.keyword}">${i}</a>
                         </li>
                     </c:forEach>
@@ -380,26 +379,18 @@
         const $amount = document.querySelector('.amount');
         const $target = $amount.children;
 
-        //amount 속의 클릭이벤트를 위해 amount 배열을 추출
-        // console.log($target);
-        // console.log($target[0]);
-        // console.log($target[1]);
-        // console.log($target[2]);
-
-        $target[0].addEventListener('click', e=> {
+        $target[0].addEventListener('click', e => {
 
             $target[0].preventDefault;
 
             //기존의 current 클래스 삭제
-            for(i=0; i<3; i++) {
+            for (i = 0; i < 3; i++) {
                 console.log('current 삭제!');
                 $target[i].classList.remove('current');
             }
-            
+
             $target[0].classList.add('current');
         })
-        
-
 
         //메인 실행부   (common.PageMaker가 알고있다.)
         (function () {

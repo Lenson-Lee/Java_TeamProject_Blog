@@ -9,23 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Front page</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="/css/write.css?ver=1">
+
 
     <%@ include file="../include/header.jsp" %>
 
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/active.js"></script>
+
 
     <!-- 위지윅 에디터 ckeditor.com/ textarea 태그에서 활성화 가능해진다. -->
     <!-- 버전 문제같은데 5가 안되어서 4 썼습니다. -->
@@ -73,38 +61,17 @@
                     <div class="uploaded-list"></div>
 
 
-                    <input class="btn btn-outline-danger" type="submit" value="등록">
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#abc">
-                        모달 테스트
-                    </button> -->
+                    <!-- <input class="btn btn-outline-danger" type="submit" value="등록"> -->
 
-                    <button type="submit">등록</button>
+                    <button type="submit" id="modify-btn" class="btn btn-default">등록</button>
 
+                    <!-- herf는 카테고리별로 이동하게 만들어야함! -->
+                    <a id="modify-btn" class="move btn btn-default" href="movie-list" style="text-decoration: none;">글 목록보기</a>
                 </form>
 
             </div>
 
-            <!-- herf는 카테고리별로 이동하게 만들어야함! -->
-            <a id="boardlist" href="movie-list" style="text-decoration: none;">글 목록보기</a>
 
-            <!-- Modal -->
-            <div class="modal fade" id="abc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
 
